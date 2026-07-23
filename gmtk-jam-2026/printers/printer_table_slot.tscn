@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cedcb2c6vmfb4"]
+
+[ext_resource type="Script" uid="uid://d0pft0i2xkvas" path="res://printers/printer_table_slot.gd" id="1_6pimb"]
+[ext_resource type="Shape2D" uid="uid://ivtgc1icxtqd" path="res://printers/printer_collider_shape.tres" id="1_gpxfo"]
+
+[node name="PrinterSlot" type="Area2D" unique_id=979376716]
+script = ExtResource("1_6pimb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464447289]
+position = Vector2(0, -32)
+shape = ExtResource("1_gpxfo")
+
+[node name="Button" type="Button" parent="." unique_id=895272761]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -184.0
+offset_right = 40.0
+offset_bottom = -153.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "PLACE"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -6,15 +6,19 @@ const print_item_action_ui = preload("res://ui/print_item_action_ui.tscn")
 @export var tier: ThreeDPrinterTier
 
 @onready var sprite = $Sprite2D
-@onready var print_items_list = $PrintItems
-@onready var state_label = $StateLabel
+@onready var idle_menu = $IdleMenuUI
+@onready var move_btn = $IdleMenuUI/Button
+@onready var print_items_list = $IdleMenuUI/PrintItems
 @onready var countdown = $Countdown
 @onready var print_done_ui = $PrintDoneActionUI
+
 
 enum State { IDLE, PRINTING, DONE }
 
 var state: State = State.IDLE
 var printing_items: Array[PrintItem] = []
+var player: Player = null
+var slot: PrinterTableSlot = null
 
 
 func _ready():
@@ -23,22 +27,29 @@ func _ready():
 
 func _on_area_2d_body_entered(body):
 	if body is Player:
+		player = body 
 		match(state):
 			State.IDLE:
-				_open_print_items_list()
+				_open_idle_menu()
 			State.DONE:
 				print_done_ui.show_actions()
 
 
 func _on_area_2d_body_exited(body):
 	if body is Player:
+		player = null
 		if state == State.IDLE:
-			_close_print_items_list()
+			_close_idle_menu()
 		if state == State.DONE:
 			print_done_ui.hide_actions()
 
 
-func _open_print_items_list():
+func _open_idle_menu():
+	if player.carrying:
+		move_btn.hide()
+	else:
+		move_btn.show()
+	
 	var open_jobs = JobManager.get_open_jobs()
 	
 	for job in open_jobs:
@@ -49,13 +60,14 @@ func _open_print_items_list():
 		
 		print_items_list.add_child(item_ui)
 	
-	print_items_list.show()
+	idle_menu.show()
 
 
-func _close_print_items_list():
+func _close_idle_menu():
 	for item in print_items_list.get_children():
 		item.queue_free()
-	print_items_list.hide()
+	
+	idle_menu.hide()
 
 
 func _on_print_items(items: Array[PrintItem]):
@@ -65,7 +77,7 @@ func _on_print_items(items: Array[PrintItem]):
 	countdown.start(print_time)
 	countdown.show()
 	JobManager.on_player_print_items(printing_items)
-	_close_print_items_list()
+	_close_idle_menu()
 
 
 func _set_state(_state: State):
@@ -82,5 +94,8 @@ func _on_print_done():
 func _on_player_pickup():
 	JobManager.on_player_picked_up_items(printing_items)
 	_set_state(State.IDLE)
-	
-	
+
+
+func _on_move_button_pressed():
+	if player:
+		player.on_move_printer(self)
