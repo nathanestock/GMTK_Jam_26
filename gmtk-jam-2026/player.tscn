@@ -1,41 +1,21 @@
 [gd_scene format=3 uid="uid://c3eo6cqsrha2a"]
 
 [ext_resource type="Script" uid="uid://duyxtehvgnktt" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://dtg5mdssssvfm" path="res://assets/Character.png" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
-size = Vector2(76, 215)
+size = Vector2(48, 288)
 
 [node name="Player" type="CharacterBody2D" unique_id=2088812814]
 script = ExtResource("1_4flbx")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2097717516]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -32.5
-offset_top = -207.0
-offset_right = 32.5
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.4, 0.40392157, 1, 1)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=210314792]
+position = Vector2(0, -144)
+scale = Vector2(6, 6)
+texture = ExtResource("2_onrkg")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1344898009]
-position = Vector2(0, -102.5)
+position = Vector2(0, -144)
 shape = SubResource("RectangleShape2D_e8xbq")
-
-[node name="PrintJobUI" type="ColorRect" parent="." unique_id=257421282]
-visible = false
-offset_left = -43.0
-offset_top = -145.0
-offset_right = 45.0
-offset_bottom = -70.0
-
-[node name="FinishedItemUI" type="ColorRect" parent="." unique_id=1498413383]
-visible = false
-offset_left = -30.0
-offset_top = -127.0
-offset_right = 28.666664
-offset_bottom = -77.0
-color = Color(1, 0.14117648, 0.2901961, 1)

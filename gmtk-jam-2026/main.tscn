@@ -1,55 +1,50 @@
 [gd_scene format=3 uid="uid://fm77st67aphw"]
 
 [ext_resource type="PackedScene" uid="uid://c3eo6cqsrha2a" path="res://player.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://d168uwm2mfwar" path="res://room.tscn" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cdgvfkks65sbj" path="res://computer.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b8412w5jcg1c5" path="res://mailbox.tscn" id="3_lquwl"]
-[ext_resource type="Script" uid="uid://bupgmvvshahg8" path="res://room_bounds.gd" id="4_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dhvam6x6dlher" path="res://3d_printer.tscn" id="4_lquwl"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_syao1"]
+[ext_resource type="Resource" uid="uid://dpg2mvpfioy5r" path="res://printers/printer_tier_1.tres" id="4_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dhvam6x6dlher" path="res://printers/3d_printer.tscn" id="4_lquwl"]
+[ext_resource type="Resource" uid="uid://ddd47swujl7qu" path="res://printers/printer_tier_2.tres" id="5_kek77"]
+[ext_resource type="Resource" uid="uid://fep7f12o5uky" path="res://printers/printer_tier_3.tres" id="6_4c57u"]
+[ext_resource type="PackedScene" uid="uid://domnvf0qnycmf" path="res://table.tscn" id="9_kek77"]
 
 [node name="main" type="Node2D" unique_id=1447262448]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=445633741]
 anchor_mode = 0
 
+[node name="Room" parent="." unique_id=730556488 instance=ExtResource("1_lquwl")]
+
 [node name="Computer" parent="." unique_id=629155106 node_paths=PackedStringArray("player") instance=ExtResource("3_1bvp3")]
-position = Vector2(8, 473)
+position = Vector2(136, 600)
 player = NodePath("../Player")
 
+[node name="Mailbox" parent="." unique_id=1543192527 instance=ExtResource("3_lquwl")]
+position = Vector2(984, 600)
+
+[node name="Table" parent="." unique_id=1504792125 instance=ExtResource("9_kek77")]
+position = Vector2(416, 600)
+
+[node name="Table2" parent="." unique_id=57874827 instance=ExtResource("9_kek77")]
+position = Vector2(672, 600)
+
 [node name="3DPrinter" parent="." unique_id=1096942018 instance=ExtResource("4_lquwl")]
-position = Vector2(334, 408)
+position = Vector2(368, 448)
+tier = ExtResource("4_5vw27")
+
+[node name="3DPrinter4" parent="." unique_id=353726279 instance=ExtResource("4_lquwl")]
+position = Vector2(464, 448)
+tier = ExtResource("4_5vw27")
 
 [node name="3DPrinter2" parent="." unique_id=2027950830 instance=ExtResource("4_lquwl")]
-position = Vector2(474, 410)
-max_items = 2
+position = Vector2(624, 448)
+tier = ExtResource("5_kek77")
 
 [node name="3DPrinter3" parent="." unique_id=688042853 instance=ExtResource("4_lquwl")]
-position = Vector2(616, 410)
-max_items = 4
-
-[node name="Mailbox" parent="." unique_id=1543192527 instance=ExtResource("3_lquwl")]
-position = Vector2(991, 472)
+position = Vector2(720, 448)
+tier = ExtResource("6_4c57u")
 
 [node name="Player" parent="." unique_id=2088812814 instance=ExtResource("1_0xm2m")]
-position = Vector2(211, 629)
-
-[node name="RoomBounds" type="Node2D" parent="." unique_id=782545636]
-script = ExtResource("4_7mycd")
-
-[node name="Floor" type="StaticBody2D" parent="RoomBounds" unique_id=1723648945]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBounds/Floor" unique_id=1450046485]
-shape = SubResource("WorldBoundaryShape2D_syao1")
-
-[node name="LeftWall" type="StaticBody2D" parent="RoomBounds" unique_id=1652941943]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBounds/LeftWall" unique_id=469959070]
-rotation = 1.5707964
-shape = SubResource("WorldBoundaryShape2D_syao1")
-
-[node name="RightWall" type="StaticBody2D" parent="RoomBounds" unique_id=1214251158]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBounds/RightWall" unique_id=1409199080]
-rotation = -1.5707964
-shape = SubResource("WorldBoundaryShape2D_syao1")
+position = Vector2(232, 600)

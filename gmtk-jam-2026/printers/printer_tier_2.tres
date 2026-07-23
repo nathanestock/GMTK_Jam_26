@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ThreeDPrinterTier" format=3 uid="uid://ddd47swujl7qu"]
+
+[ext_resource type="Script" uid="uid://vhtwk4w6onxf" path="res://printers/3d_printer_tier.gd" id="1_qrp3j"]
+[ext_resource type="Texture2D" uid="uid://b548xd27skq3s" path="res://assets/tier2_printer.tres" id="2_vjrwt"]
+
+[resource]
+script = ExtResource("1_qrp3j")
+max_items = 2
+texture = ExtResource("2_vjrwt")
+metadata/_custom_type_script = "uid://vhtwk4w6onxf"

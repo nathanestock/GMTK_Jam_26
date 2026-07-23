@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://domnvf0qnycmf"]
+
+[ext_resource type="Texture2D" uid="uid://o8ii68jtvwbd" path="res://assets/Static_Objects.png" id="1_jd0nb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8xbq"]
+atlas = ExtResource("1_jd0nb")
+region = Rect2(40, 32, 48, 32)
+
+[node name="Table" type="Node2D" unique_id=1504792125]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=282300388]
+position = Vector2(0, -96)
+scale = Vector2(6, 6)
+texture = SubResource("AtlasTexture_e8xbq")

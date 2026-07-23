@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://d168uwm2mfwar"]
+
+[ext_resource type="Texture2D" uid="uid://cl6jd4sr2bva6" path="res://assets/TileSheet.png" id="1_88gup"]
+[ext_resource type="Texture2D" uid="uid://bxa5wqri16b50" path="res://assets/border_vertical.tres" id="2_4o3f6"]
+[ext_resource type="Texture2D" uid="uid://b14vjw6xc2xhx" path="res://assets/temporary_border_vertical.tres" id="3_ka7wq"]
+[ext_resource type="Texture2D" uid="uid://b5l6ys5sqey5s" path="res://assets/border_horizontal.tres" id="3_v5vuv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syao1"]
+atlas = ExtResource("1_88gup")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5vuv"]
+atlas = ExtResource("1_88gup")
+region = Rect2(0, 24, 32, 24)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e8xbq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5k2b"]
+atlas = ExtResource("1_88gup")
+region = Rect2(0, 8, 8, 8)
+
+[node name="Room" type="Node2D" unique_id=730556488]
+
+[node name="Background" type="TextureRect" parent="." unique_id=1017543204]
+offset_right = 192.0
+offset_bottom = 108.0
+scale = Vector2(6, 6)
+texture = SubResource("AtlasTexture_syao1")
+stretch_mode = 1
+
+[node name="Window_1" type="TextureRect" parent="." unique_id=630749148]
+offset_left = 168.0
+offset_top = 192.0
+offset_right = 200.0
+offset_bottom = 216.0
+scale = Vector2(6, 6)
+texture = SubResource("AtlasTexture_v5vuv")
+stretch_mode = 1
+
+[node name="Window_2" type="TextureRect" parent="." unique_id=1920526768]
+offset_left = 488.0
+offset_top = 192.0
+offset_right = 520.0
+offset_bottom = 216.0
+scale = Vector2(6, 6)
+texture = SubResource("AtlasTexture_v5vuv")
+stretch_mode = 1
+
+[node name="Window_3" type="TextureRect" parent="." unique_id=778262991]
+offset_left = 808.00006
+offset_top = 192.0
+offset_right = 840.00006
+offset_bottom = 216.0
+scale = Vector2(6, 6)
+texture = SubResource("AtlasTexture_v5vuv")
+stretch_mode = 1
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=2101494068]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=1492607]
+position = Vector2(48, 320)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_e8xbq")
+
+[node name="TextureRect" type="TextureRect" parent="LeftWall" unique_id=1123928527]
+texture_repeat = 2
+offset_top = 48.0
+offset_right = 8.0
+offset_bottom = 140.0
+scale = Vector2(6, 6)
+texture = ExtResource("2_4o3f6")
+stretch_mode = 1
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=1473514412]
+position = Vector2(1104, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1583466764]
+position = Vector2(0, 320)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_e8xbq")
+
+[node name="TextureRect" type="TextureRect" parent="RightWall" unique_id=1691554368]
+texture_repeat = 2
+offset_top = 48.0
+offset_right = 8.0
+offset_bottom = 140.0
+scale = Vector2(6, 6)
+texture = ExtResource("3_ka7wq")
+stretch_mode = 1
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=708342499]
+position = Vector2(0, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1771435812]
+position = Vector2(608, 0)
+shape = SubResource("WorldBoundaryShape2D_e8xbq")
+
+[node name="TextureRect" type="TextureRect" parent="Floor" unique_id=1494300824]
+texture_repeat = 2
+offset_left = 48.0
+offset_right = 224.0
+offset_bottom = 8.0
+scale = Vector2(6, 6)
+texture = ExtResource("3_v5vuv")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Floor" unique_id=2001344021]
+texture_repeat = 2
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(6, 6)
+texture = SubResource("AtlasTexture_x5k2b")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Floor" unique_id=1598560193]
+texture_repeat = 2
+offset_left = 1104.0
+offset_right = 1112.0
+offset_bottom = 8.0
+scale = Vector2(6, 6)
+texture = SubResource("AtlasTexture_x5k2b")
+stretch_mode = 1
+
+[node name="Roof" type="StaticBody2D" parent="." unique_id=1686820792]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof" unique_id=1934786473]
+position = Vector2(608, 48)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_e8xbq")
+
+[node name="TextureRect" type="TextureRect" parent="Roof" unique_id=929142868]
+texture_repeat = 2
+offset_left = 48.0
+offset_right = 224.0
+offset_bottom = 8.0
+scale = Vector2(6, 6)
+texture = ExtResource("3_v5vuv")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Roof" unique_id=778863324]
+texture_repeat = 2
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(6, 6)
+texture = SubResource("AtlasTexture_x5k2b")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="Roof" unique_id=1423618226]
+texture_repeat = 2
+offset_left = 1104.0
+offset_right = 1112.0
+offset_bottom = 8.0
+scale = Vector2(6, 6)
+texture = SubResource("AtlasTexture_x5k2b")
+stretch_mode = 1
