@@ -5,11 +5,14 @@ signal job_completed(PrintJob)
 
 const print_job_ui = preload("res://ui/print_job_ui.tscn")
 
-@onready var list_hbox = $HBoxContainer
+@onready var list_hbox = $JobListUI
+@onready var money_ui = $MoneyCounterUI
 
 var jobs: Array[PrintJob] = []
-var money: int = 0
 
+
+func _ready():
+	money_ui.set_money(20)
 
 func on_player_accepted_job(job: PrintJob):
 	jobs.append(job)
@@ -54,13 +57,9 @@ func deliver_completed_jobs():
 	var completed_jobs = jobs.filter(func (j): return j.is_completed())
 	completed_jobs.reverse()
 	for job in completed_jobs:
-		add_money(job.reward)
+		money_ui.add_money(job.reward)
 		
 		var index = list_hbox.get_children().map(func (ui): return ui.job).find(job)
 		var job_ui = list_hbox.get_child(index)
 		job_ui.queue_free()
 		jobs.remove_at(index)
-
-
-func add_money(amount: int):
-	money += amount

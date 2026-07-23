@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://fm77st67aphw"]
 
 [ext_resource type="PackedScene" uid="uid://c3eo6cqsrha2a" path="res://player.tscn" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://bfktp6gemhdsa" path="res://job_manager.tscn" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cdgvfkks65sbj" path="res://computer.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b8412w5jcg1c5" path="res://mailbox.tscn" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://bupgmvvshahg8" path="res://room_bounds.gd" id="4_7mycd"]
@@ -10,8 +9,6 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_syao1"]
 
 [node name="main" type="Node2D" unique_id=1447262448]
-
-[node name="JobManager" parent="." unique_id=1337043993 instance=ExtResource("1_7mycd")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=445633741]
 anchor_mode = 0
