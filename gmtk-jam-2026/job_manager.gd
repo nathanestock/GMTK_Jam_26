@@ -2,6 +2,7 @@ extends CanvasLayer
 class_name JobManagerClass
 
 signal job_completed(PrintJob)
+signal new_job(PrintJob)
 
 const print_job_ui = preload("res://ui/print_job_ui.tscn")
 
@@ -9,13 +10,19 @@ const print_job_ui = preload("res://ui/print_job_ui.tscn")
 @onready var money_ui = $MoneyCounterUI
 
 var jobs: Array[PrintJob] = []
+var new_jobs: Array[PrintJob] = []
 
 
 func _ready():
 	money_ui.set_money(20)
+	_create_new_job(Color.RED)
+	_create_new_job(Color.BLUE)
+
 
 func on_player_accepted_job(job: PrintJob):
 	jobs.append(job)
+	var index = new_jobs.find(job)
+	new_jobs.remove_at(index)
 	_render_jobs_ui()
 
 
@@ -59,7 +66,33 @@ func deliver_completed_jobs():
 	for job in completed_jobs:
 		money_ui.add_money(job.reward)
 		
+		_create_new_job(job.color)
+		
 		var index = list_hbox.get_children().map(func (ui): return ui.job).find(job)
 		var job_ui = list_hbox.get_child(index)
 		job_ui.queue_free()
 		jobs.remove_at(index)
+
+
+func _create_new_job(color: Color):
+	var job = PrintJob.new()
+	job.accept_time = 30
+	job.reward = 20
+	job.color = color
+	
+	for i in randi_range(1, 2):
+		var item = PrintItem.new()
+		item.print_time = 5
+		item.material = 10
+		item.color = job.color
+		job.items.append(item)
+	
+	new_jobs.append(job)
+	new_job.emit(job)
+
+
+func on_new_job_expired(job: PrintJob):
+	var index  = new_jobs.find(job)
+	new_jobs.remove_at(index)
+	
+	_create_new_job(job.color)

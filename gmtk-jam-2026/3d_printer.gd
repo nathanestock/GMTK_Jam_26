@@ -86,10 +86,12 @@ func _set_state(_state: State):
 func _on_print_done():
 	_set_state(State.DONE)
 	countdown.hide()
+	print(printing_items)
 	print_done_ui.show_items(printing_items)
 
 
 func _on_player_pickup():
 	JobManager.on_player_picked_up_items(printing_items)
 	_set_state(State.IDLE)
+	
 	

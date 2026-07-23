@@ -1,38 +1,45 @@
 [gd_scene format=3 uid="uid://b6cku6jwa1w4e"]
 
 [ext_resource type="Script" uid="uid://bfmdifoyfnl1y" path="res://ui/print_item_action_ui.gd" id="1_jaflf"]
-[ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="2_5y85t"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8xbq"]
-bg_color = Color(1, 1, 1, 0.39215687)
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
-
-[node name="PrintItemActionUI" type="PanelContainer" unique_id=1200552192]
+[node name="PrintItemActionUI" type="VBoxContainer" unique_id=1794530848]
 z_index = 2
 z_as_relative = false
-offset_right = 106.0
-offset_bottom = 31.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -70.0
+offset_right = 53.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_e8xbq")
+theme_override_constants/separation = 16
 script = ExtResource("1_jaflf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1654754367]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Countdown" parent="VBoxContainer" unique_id=93846558 instance=ExtResource("2_5y85t")]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1473660525]
-layout_mode = 2
-alignment = 1
-
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=775843018]
+[node name="Button" type="Button" parent="." unique_id=775843018]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "PRINT"
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=976767496]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1654754367]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PrintTimeLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=910729906]
+layout_mode = 2
+text = "T: 50"
+horizontal_alignment = 1
+
+[node name="ItemListUI" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1473660525]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -10,6 +10,7 @@ var money: int = 0
 
 func set_money(value: int):
 	money = value
+	_update_money_label()
 
 
 func add_money(value: int):

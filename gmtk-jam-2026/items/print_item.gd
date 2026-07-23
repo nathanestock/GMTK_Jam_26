@@ -1,6 +1,7 @@
 extends Resource
 class_name PrintItem
 
+@export var material: int = 0
 @export var print_time: int = 0
 
 var color: Color

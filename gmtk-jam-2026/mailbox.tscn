@@ -9,42 +9,53 @@ size = Vector2(103, 111)
 script = ExtResource("1_oanx3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1481730074]
-offset_right = 112.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
 offset_bottom = 120.0
+grow_horizontal = 0
 color = Color(0.35906905, 0.35906908, 0.35906896, 1)
 
 [node name="Label" type="Label" parent="." unique_id=2124266698]
-offset_left = 24.0
-offset_top = 44.0
-offset_right = 102.0
-offset_bottom = 67.0
+offset_left = -88.0
+offset_top = 39.0
+offset_right = -10.0
+offset_bottom = 62.0
 text = "Mailbox"
 
-[node name="ReadyToDeliverJobs" type="PanelContainer" parent="." unique_id=324858021]
+[node name="ReadyToDeliverJobs" type="HBoxContainer" parent="." unique_id=853832115]
 visible = false
-offset_left = 27.308167
-offset_top = -103.412415
-offset_right = 89.30817
-offset_bottom = -63.412415
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-12, -24)
+theme_override_constants/separation = 12
+alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ReadyToDeliverJobs" unique_id=120856059]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="CompletedJobList" type="VBoxContainer" parent="ReadyToDeliverJobs/VBoxContainer" unique_id=1587857847]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="ReadyToDeliverJobs/VBoxContainer" unique_id=1080115950]
+[node name="Button" type="Button" parent="ReadyToDeliverJobs" unique_id=1080115950]
 visible = false
 layout_mode = 2
 text = "SHIP IT"
 
+[node name="CompletedJobList" type="VBoxContainer" parent="ReadyToDeliverJobs" unique_id=9610336]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/separation = 32
+
 [node name="Area2D" type="Area2D" parent="." unique_id=798140632]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=562128933]
-position = Vector2(56, 59)
+position = Vector2(-56, 60)
 shape = SubResource("RectangleShape2D_ha6t8")
 
-[connection signal="pressed" from="ReadyToDeliverJobs/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ReadyToDeliverJobs/Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

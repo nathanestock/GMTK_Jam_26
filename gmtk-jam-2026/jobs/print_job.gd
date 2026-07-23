@@ -14,9 +14,11 @@ func get_total_time() -> int:
 	return total
 
 
-func set_item_colors():
+func get_total_material() -> int:
+	var total = accept_time
 	for item in items:
-		item.color = color
+		total += item.material
+	return total
 
 
 func is_completed():
