@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://fm77st67aphw"]
+
+[ext_resource type="PackedScene" uid="uid://c3eo6cqsrha2a" path="res://player.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bfktp6gemhdsa" path="res://job_manager.tscn" id="1_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cdgvfkks65sbj" path="res://computer.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://b8412w5jcg1c5" path="res://mailbox.tscn" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://bupgmvvshahg8" path="res://room_bounds.gd" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dhvam6x6dlher" path="res://3d_printer.tscn" id="4_lquwl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_syao1"]
+
+[node name="main" type="Node2D" unique_id=1447262448]
+
+[node name="JobManager" parent="." unique_id=1337043993 instance=ExtResource("1_7mycd")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=445633741]
+anchor_mode = 0
+
+[node name="Computer" parent="." unique_id=629155106 node_paths=PackedStringArray("player") instance=ExtResource("3_1bvp3")]
+position = Vector2(8, 473)
+player = NodePath("../Player")
+
+[node name="3DPrinter" parent="." unique_id=1096942018 instance=ExtResource("4_lquwl")]
+position = Vector2(334, 408)
+
+[node name="3DPrinter2" parent="." unique_id=2027950830 instance=ExtResource("4_lquwl")]
+position = Vector2(474, 410)
+max_items = 2
+
+[node name="3DPrinter3" parent="." unique_id=688042853 instance=ExtResource("4_lquwl")]
+position = Vector2(616, 410)
+max_items = 4
+
+[node name="Mailbox" parent="." unique_id=1543192527 instance=ExtResource("3_lquwl")]
+position = Vector2(991, 472)
+
+[node name="Player" parent="." unique_id=2088812814 instance=ExtResource("1_0xm2m")]
+position = Vector2(211, 629)
+
+[node name="RoomBounds" type="Node2D" parent="." unique_id=782545636]
+script = ExtResource("4_7mycd")
+
+[node name="Floor" type="StaticBody2D" parent="RoomBounds" unique_id=1723648945]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBounds/Floor" unique_id=1450046485]
+shape = SubResource("WorldBoundaryShape2D_syao1")
+
+[node name="LeftWall" type="StaticBody2D" parent="RoomBounds" unique_id=1652941943]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBounds/LeftWall" unique_id=469959070]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_syao1")
+
+[node name="RightWall" type="StaticBody2D" parent="RoomBounds" unique_id=1214251158]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBounds/RightWall" unique_id=1409199080]
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_syao1")

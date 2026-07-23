@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PrintJob" format=3 uid="uid://c7fg1g1tpwf7j"]
+
+[ext_resource type="Script" uid="uid://th3fguv1747d" path="res://items/print_item.gd" id="1_tn3pw"]
+[ext_resource type="Script" uid="uid://io5jt5hoiprx" path="res://jobs/print_job.gd" id="2_2gcn8"]
+
+[sub_resource type="Resource" id="Resource_rpeei"]
+script = ExtResource("1_tn3pw")
+metadata/_custom_type_script = "uid://th3fguv1747d"
+
+[resource]
+script = ExtResource("2_2gcn8")
+accept_time = 30
+reward = 10
+items = Array[ExtResource("1_tn3pw")]([SubResource("Resource_rpeei")])
+color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://io5jt5hoiprx"

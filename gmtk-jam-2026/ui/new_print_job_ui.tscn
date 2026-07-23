@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://2w5kf43wrasc"]
+
+[ext_resource type="Script" uid="uid://bv2d04xatm3b" path="res://ui/new_print_job_ui.gd" id="1_risfh"]
+[ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="2_v6w5o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8xbq"]
+bg_color = Color(1, 1, 1, 0.39215687)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="NewPrintJobUI" type="PanelContainer" unique_id=1200552192]
+z_index = 2
+z_as_relative = false
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_e8xbq")
+script = ExtResource("1_risfh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2015079944]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer" unique_id=796025825]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.9384959, 0.057033993, 0.29948437, 1)
+
+[node name="Countdown" parent="HBoxContainer" unique_id=93846558 instance=ExtResource("2_v6w5o")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=775843018]
+visible = false
+layout_mode = 2
+text = "ACCEPT"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

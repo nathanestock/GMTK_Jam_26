@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="PrintJob" format=3 uid="uid://bwsit8m341jfo"]
+
+[ext_resource type="Script" uid="uid://th3fguv1747d" path="res://items/print_item.gd" id="1_vost7"]
+[ext_resource type="Script" uid="uid://io5jt5hoiprx" path="res://jobs/print_job.gd" id="2_6ek71"]
+
+[sub_resource type="Resource" id="Resource_yj654"]
+script = ExtResource("1_vost7")
+print_time = 5
+metadata/_custom_type_script = "uid://th3fguv1747d"
+
+[sub_resource type="Resource" id="Resource_cwlnv"]
+script = ExtResource("1_vost7")
+print_time = 5
+metadata/_custom_type_script = "uid://th3fguv1747d"
+
+[sub_resource type="Resource" id="Resource_06cjg"]
+script = ExtResource("1_vost7")
+metadata/_custom_type_script = "uid://th3fguv1747d"
+
+[resource]
+script = ExtResource("2_6ek71")
+accept_time = 30
+reward = 20
+items = Array[ExtResource("1_vost7")]([SubResource("Resource_yj654"), SubResource("Resource_cwlnv"), SubResource("Resource_06cjg")])
+color = Color(0.012736937, 0.24364993, 1, 1)
+metadata/_custom_type_script = "uid://io5jt5hoiprx"

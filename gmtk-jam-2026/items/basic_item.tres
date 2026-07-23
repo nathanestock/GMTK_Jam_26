@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PrintItem" format=3 uid="uid://cpccxqn3tr6jc"]
+
+[ext_resource type="Script" uid="uid://th3fguv1747d" path="res://items/print_item.gd" id="1_ihohs"]
+
+[resource]
+script = ExtResource("1_ihohs")
+print_time = 10
+metadata/_custom_type_script = "uid://th3fguv1747d"

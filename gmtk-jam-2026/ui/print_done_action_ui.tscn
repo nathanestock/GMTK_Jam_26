@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dm43vq1iau5qw"]
+
+[ext_resource type="Script" uid="uid://cd2ubcu5cbeop" path="res://ui/print_done_action_ui.gd" id="1_y1odk"]
+[ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="2_cwlnv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8xbq"]
+bg_color = Color(1, 1, 1, 0.39215687)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="PrintDoneActionUI" type="PanelContainer" unique_id=1200552192]
+z_index = 2
+z_as_relative = false
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_e8xbq")
+script = ExtResource("1_y1odk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1048176404]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Countdown" parent="VBoxContainer" unique_id=93846558 instance=ExtResource("2_cwlnv")]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1450044950]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=2136159073]
+layout_mode = 2
+text = "PICKUP"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

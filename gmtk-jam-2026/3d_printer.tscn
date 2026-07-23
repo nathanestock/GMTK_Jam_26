@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dhvam6x6dlher"]
+
+[ext_resource type="Script" uid="uid://bcl02xkwrvpr" path="res://3d_printer.gd" id="1_pmq5y"]
+[ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="2_pmq5y"]
+[ext_resource type="PackedScene" uid="uid://dm43vq1iau5qw" path="res://ui/print_done_action_ui.tscn" id="3_pxnxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnrvf"]
+size = Vector2(61.75, 94.5)
+
+[node name="3DPrinter" type="Node2D" unique_id=1096942018]
+script = ExtResource("1_pmq5y")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1632248545]
+offset_right = 119.0
+offset_bottom = 102.0
+color = Color(0.12744379, 0.41741565, 0.41870344, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1260825969]
+offset_left = 18.0
+offset_top = 3.0
+offset_right = 97.0
+offset_bottom = 26.0
+text = "3D Printer"
+
+[node name="StateLabel" type="Label" parent="." unique_id=1207424293]
+offset_left = 16.0
+offset_top = 27.0
+offset_right = 95.0
+offset_bottom = 50.0
+text = "IDLE"
+horizontal_alignment = 1
+
+[node name="PrintItems" type="HBoxContainer" parent="." unique_id=2048400638]
+visible = false
+offset_left = -20.0
+offset_top = -150.0
+offset_right = 127.0
+offset_bottom = -9.0
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="Countdown" parent="." unique_id=93846558 instance=ExtResource("2_pmq5y")]
+visible = false
+offset_left = 36.0
+offset_top = 55.0
+offset_right = 76.0
+offset_bottom = 95.0
+
+[node name="PrintDoneActionUI" parent="." unique_id=1200552192 instance=ExtResource("3_pxnxx")]
+visible = false
+offset_left = 46.0
+offset_top = -40.0
+offset_right = 70.0
+offset_bottom = -16.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1828446575]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=584956314]
+position = Vector2(60, 51)
+shape = SubResource("RectangleShape2D_fnrvf")
+
+[connection signal="timeout" from="Countdown" to="." method="_on_print_done"]
+[connection signal="pickup" from="PrintDoneActionUI" to="." method="_on_player_pickup"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

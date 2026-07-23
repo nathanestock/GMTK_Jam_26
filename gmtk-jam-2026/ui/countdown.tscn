@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://real3m6m8fbo"]
+
+[ext_resource type="Script" uid="uid://vxw8j485oj5r" path="res://ui/countdown.gd" id="1_qh2dl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpeei"]
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpeei"]
+font_size = 20
+
+[node name="Countdown" type="PanelContainer" unique_id=93846558]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rpeei")
+script = ExtResource("1_qh2dl")
+
+[node name="Label" type="Label" parent="." unique_id=464973896]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_rpeei")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=661735968]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

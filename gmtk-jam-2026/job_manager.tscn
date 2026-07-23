@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bfktp6gemhdsa"]
+
+[ext_resource type="Script" uid="uid://chtcuefoyduuk" path="res://job_manager.gd" id="1_23jyf"]
+
+[node name="JobManager" type="CanvasLayer" unique_id=1337043993]
+script = ExtResource("1_23jyf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1165958978]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 1

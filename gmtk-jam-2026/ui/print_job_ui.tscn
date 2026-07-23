@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cays145ospm3i"]
+
+[ext_resource type="Script" uid="uid://cgqkkast2vm5g" path="res://ui/print_job_ui.gd" id="1_rpeei"]
+[ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="2_j6y5t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mid3r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0, 0, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="PrintJobUI" type="PanelContainer" unique_id=1669914716]
+z_index = 2
+z_as_relative = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_right = 28.0
+offset_bottom = 71.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 10)
+theme_override_styles/panel = SubResource("StyleBoxFlat_mid3r")
+script = ExtResource("1_rpeei")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1163029195]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Countdown" parent="VBoxContainer" unique_id=93846558 instance=ExtResource("2_j6y5t")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=315675438]
+layout_mode = 2
+
+[connection signal="timeout" from="VBoxContainer/Countdown" to="." method="_on_countdown_timeout"]
