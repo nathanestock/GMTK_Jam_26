@@ -1,7 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED = 300.0
+const SPEED = 600.0
+const CARRY_SPEED = 200.0
+const ACCELERATION = 1000.0
+const FRICTION = 3000.0
 
 @onready var sprite = $Sprite2D
 @onready var carry_sprite = $CarryPrinter
@@ -17,13 +20,14 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * SPEED
+		var speed = CARRY_SPEED if carrying else SPEED
+		velocity.x = move_toward(velocity.x, direction * speed, ACCELERATION * delta)
 		if direction > 0:
 			sprite.flip_h = false
 		elif direction < 0:
 			sprite.flip_h = true
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 
 	move_and_slide()
 

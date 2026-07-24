@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_wy26k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
-size = Vector2(64, 56)
+size = Vector2(80, 56)
 
 [node name="Computer" type="Node2D" unique_id=646436050]
 script = ExtResource("1_18hgq")
