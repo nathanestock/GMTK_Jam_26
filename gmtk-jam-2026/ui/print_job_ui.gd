@@ -1,6 +1,8 @@
 extends PanelContainer
 class_name PrintJobUI
 
+signal expired
+
 @export var job: PrintJob
 
 @onready var countdown = $VBoxContainer/Countdown
@@ -19,7 +21,7 @@ func _ready():
 	
 	add_theme_stylebox_override("panel", style)
 	
-	countdown.start(job.get_total_time())
+	countdown.start(job.duration)
 	
 	for item in job.items:
 		var rect = ColorRect.new()
@@ -32,6 +34,7 @@ func _ready():
 
 
 func _on_countdown_timeout():
+	expired.emit()
 	queue_free()
 
 

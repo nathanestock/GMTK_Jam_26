@@ -1,37 +1,84 @@
-[gd_scene format=3 uid="uid://cdgvfkks65sbj"]
+[gd_scene format=3 uid="uid://1nq6fa488rg"]
 
-[ext_resource type="Script" uid="uid://30lil2riuqc2" path="res://computer.gd" id="1_18hgq"]
+[ext_resource type="Script" uid="uid://dxjwucwbt6qkg" path="res://computer.gd" id="1_18hgq"]
 [ext_resource type="Texture2D" uid="uid://c86tksb6dwm0t" path="res://assets/computer.tres" id="2_18hgq"]
+[ext_resource type="PackedScene" uid="uid://sskh05xd2oop" path="res://player_control.tscn" id="2_jr5mb"]
+[ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_4xfga"]
+[ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_wy26k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
-size = Vector2(103, 79.5)
+size = Vector2(64, 56)
 
-[node name="Computer" type="Node2D" unique_id=629155106]
+[node name="Computer" type="Node2D" unique_id=646436050]
 script = ExtResource("1_18hgq")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1194563367]
-position = Vector2(0, -120)
-scale = Vector2(6, 6)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=332398540]
+position = Vector2(0, -80)
+scale = Vector2(4, 4)
 texture = ExtResource("2_18hgq")
 
-[node name="NewJobs" type="VBoxContainer" parent="." unique_id=96716841]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = -392.0
-offset_right = 75.0
-offset_bottom = -251.0
-grow_horizontal = 2
-grow_vertical = 0
-offset_transform_enabled = true
-theme_override_constants/separation = 32
-alignment = 2
+[node name="PlayerControl" parent="." unique_id=1868566654 instance=ExtResource("2_jr5mb")]
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1768047220]
+[node name="NoColorsAlert" type="Label" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=1165733786]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_4xfga")
+text = "no available colors"
+uppercase = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1724700948]
-position = Vector2(0, -199.75)
+[node name="PendingJobAlert" type="Label" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="1" unique_id=97022145]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_4xfga")
+text = "assign to printers"
+uppercase = true
+
+[node name="ChooseJobPanel" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="2" unique_id=1801219268]
+layout_mode = 2
+theme = ExtResource("3_4xfga")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerControl/VBoxContainer/Player/ChooseJobPanel" unique_id=1677032113]
+layout_mode = 2
+
+[node name="ChooseJob" type="Label" parent="PlayerControl/VBoxContainer/Player/ChooseJobPanel/VBoxContainer" unique_id=580312273]
+layout_mode = 2
+theme = ExtResource("3_4xfga")
+text = "choose job [w/s]"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="ItemList" type="ItemList" parent="PlayerControl/VBoxContainer/Player/ChooseJobPanel/VBoxContainer" unique_id=1844733365]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_4xfga")
+allow_search = false
+auto_height = true
+item_count = 1
+
+[node name="Accept" type="Label" parent="PlayerControl/VBoxContainer/Player/ChooseJobPanel/VBoxContainer" unique_id=1531022535]
+layout_mode = 2
+theme = ExtResource("3_4xfga")
+text = "accept [space]"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="PanelContainer" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 1919007090) index="0" unique_id=575338780]
+layout_mode = 2
+theme = ExtResource("3_4xfga")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerControl/VBoxContainer/Static/PanelContainer" unique_id=515783484]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="NewJobsIn" type="Label" parent="PlayerControl/VBoxContainer/Static/PanelContainer/VBoxContainer" unique_id=1302833226]
+layout_mode = 2
+text = "NEW JOBS IN"
+
+[node name="Countdown" parent="PlayerControl/VBoxContainer/Static/PanelContainer/VBoxContainer" unique_id=93846558 instance=ExtResource("4_wy26k")]
+layout_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerControl" unique_id=1313335598]
+position = Vector2(0, -124)
 shape = SubResource("RectangleShape2D_e8xbq")
+
+[editable path="PlayerControl"]

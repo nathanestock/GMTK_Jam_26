@@ -2,55 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://c3eo6cqsrha2a" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d168uwm2mfwar" path="res://room.tscn" id="1_lquwl"]
-[ext_resource type="PackedScene" uid="uid://cdgvfkks65sbj" path="res://computer.tscn" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://b8412w5jcg1c5" path="res://mailbox.tscn" id="3_lquwl"]
-[ext_resource type="Resource" uid="uid://dpg2mvpfioy5r" path="res://printers/printer_tier_1.tres" id="4_5vw27"]
-[ext_resource type="PackedScene" uid="uid://dhvam6x6dlher" path="res://printers/3d_printer.tscn" id="4_lquwl"]
-[ext_resource type="Resource" uid="uid://ddd47swujl7qu" path="res://printers/printer_tier_2.tres" id="5_kek77"]
-[ext_resource type="Resource" uid="uid://fep7f12o5uky" path="res://printers/printer_tier_3.tres" id="6_4c57u"]
-[ext_resource type="PackedScene" uid="uid://domnvf0qnycmf" path="res://table.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://1nq6fa488rg" path="res://computer.tscn" id="3_1bvp3"]
 
 [node name="main" type="Node2D" unique_id=1447262448]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=445633741]
 anchor_mode = 0
-zoom = Vector2(6, 6)
 
 [node name="Room" parent="." unique_id=730556488 instance=ExtResource("1_lquwl")]
 
-[node name="Computer" parent="." unique_id=629155106 node_paths=PackedStringArray("player") instance=ExtResource("3_1bvp3")]
-position = Vector2(136, 600)
-player = NodePath("../Player")
-
-[node name="Mailbox" parent="." unique_id=1543192527 instance=ExtResource("3_lquwl")]
-position = Vector2(984, 600)
-
-[node name="3DPrinter" parent="." unique_id=1096942018 instance=ExtResource("4_lquwl")]
-position = Vector2(368, 448)
-tier = ExtResource("4_5vw27")
-
-[node name="3DPrinter2" parent="." unique_id=2027950830 instance=ExtResource("4_lquwl")]
-position = Vector2(624, 448)
-tier = ExtResource("5_kek77")
-
-[node name="3DPrinter3" parent="." unique_id=688042853 instance=ExtResource("4_lquwl")]
-position = Vector2(720, 448)
-tier = ExtResource("6_4c57u")
-
-[node name="Table" parent="." unique_id=1504792125 instance=ExtResource("9_kek77")]
-position = Vector2(416, 600)
-
-[node name="PrinterSlot" parent="Table" index="1" unique_id=979376716 node_paths=PackedStringArray("printer")]
-printer = NodePath("../../3DPrinter")
-
-[node name="Table2" parent="." unique_id=57874827 instance=ExtResource("9_kek77")]
-position = Vector2(672, 600)
-
-[node name="PrinterSlot" parent="Table2" index="1" unique_id=979376716 node_paths=PackedStringArray("printer")]
-printer = NodePath("../../3DPrinter2")
-
-[node name="PrinterSlot2" parent="Table2" index="2" unique_id=1532281843 node_paths=PackedStringArray("printer")]
-printer = NodePath("../../3DPrinter3")
+[node name="Computer" parent="." unique_id=646436050 instance=ExtResource("3_1bvp3")]
+position = Vector2(144, 544)
 
 [node name="Player" parent="." unique_id=2088812814 instance=ExtResource("1_0xm2m")]
-position = Vector2(60, 256)
+position = Vector2(232, 544)

@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://lvbjfb47w2js"]
+
+[ext_resource type="PackedScene" uid="uid://sskh05xd2oop" path="res://player_control.tscn" id="1_dqxn2"]
+[ext_resource type="Texture2D" uid="uid://bqr8btqu7ea4i" path="res://assets/tier1_printer.tres" id="1_ucvfv"]
+[ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_q1hwv"]
+[ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_q1hwv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
+size = Vector2(6, 11)
+
+[node name="PrinterSlot" type="Node2D" unique_id=173568912]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2142953392]
+position = Vector2(0, -33)
+texture = ExtResource("1_ucvfv")
+
+[node name="PlayerControl" parent="." unique_id=1868566654 instance=ExtResource("1_dqxn2")]
+
+[node name="PrintAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=1555896602]
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerControl/VBoxContainer/Player/PrintAction" unique_id=1608357437]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerControl/VBoxContainer/Player/PrintAction/VBoxContainer" unique_id=1515275682]
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+text = "print [space]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/PrintAction/VBoxContainer" unique_id=1176940523]
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+text = "move [w]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MoveAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="1" unique_id=158796601]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+
+[node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/MoveAction" unique_id=793948923]
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+text = "move [w]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="PlaceAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="2" unique_id=471146084]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+
+[node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/PlaceAction" unique_id=1720062411]
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+text = "place [W]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="SwapAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="3" unique_id=1341765836]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+
+[node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/SwapAction" unique_id=1465005047]
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+text = "swap [w]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="PanelContainer" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 1919007090) index="0" unique_id=2014665928]
+layout_mode = 2
+offset_transform_position = Vector2(0, 20)
+theme = ExtResource("3_q1hwv")
+
+[node name="Countdown" parent="PlayerControl/VBoxContainer/Static/PanelContainer" unique_id=93846558 instance=ExtResource("4_q1hwv")]
+layout_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerControl" unique_id=360217408]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_e8xbq")
+
+[editable path="PlayerControl"]

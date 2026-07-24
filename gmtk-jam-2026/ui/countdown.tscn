@@ -3,17 +3,17 @@
 [ext_resource type="Script" uid="uid://vxw8j485oj5r" path="res://ui/countdown.gd" id="1_qh2dl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpeei"]
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_rpeei"]
-font_size = 20
+font_size = 4
 
 [node name="Countdown" type="PanelContainer" unique_id=93846558]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 5.0
+offset_bottom = 7.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_rpeei")
