@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://duyxtehvgnktt" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://dtg5mdssssvfm" path="res://assets/Character.png" id="2_onrkg"]
-[ext_resource type="Texture2D" uid="uid://bqr8btqu7ea4i" path="res://assets/tier1_printer.tres" id="3_i3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
 size = Vector2(28, 191.5)
@@ -23,6 +22,5 @@ shape = SubResource("RectangleShape2D_e8xbq")
 
 [node name="CarryPrinter" type="Sprite2D" parent="." unique_id=830371846]
 visible = false
-position = Vector2(-4.7683716e-07, -176)
-scale = Vector2(5.9999995, 5.9999995)
-texture = ExtResource("3_i3pqv")
+position = Vector2(0, -112)
+scale = Vector2(4, 4)

@@ -3,6 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://c3eo6cqsrha2a" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d168uwm2mfwar" path="res://room.tscn" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://1nq6fa488rg" path="res://computer.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bks2jkvfnlmj" path="res://printer_table.tscn" id="3_lquwl"]
+[ext_resource type="Resource" uid="uid://dpg2mvpfioy5r" path="res://printers/printer_tier_1.tres" id="4_5vw27"]
+[ext_resource type="Resource" uid="uid://ddd47swujl7qu" path="res://printers/printer_tier_2.tres" id="5_kek77"]
+[ext_resource type="Resource" uid="uid://fep7f12o5uky" path="res://printers/printer_tier_3.tres" id="6_4c57u"]
 
 [node name="main" type="Node2D" unique_id=1447262448]
 
@@ -14,5 +18,27 @@ anchor_mode = 0
 [node name="Computer" parent="." unique_id=646436050 instance=ExtResource("3_1bvp3")]
 position = Vector2(144, 544)
 
+[node name="PrinterTable" parent="." unique_id=1849543402 instance=ExtResource("3_lquwl")]
+position = Vector2(352, 544)
+
+[node name="PrinterSlot" parent="PrinterTable" index="1" unique_id=173568912]
+tier = ExtResource("4_5vw27")
+
+[node name="PrinterTable2" parent="." unique_id=1933514438 instance=ExtResource("3_lquwl")]
+position = Vector2(512, 544)
+
+[node name="PrinterSlot" parent="PrinterTable2" index="1" unique_id=173568912]
+tier = ExtResource("5_kek77")
+
+[node name="PrinterTable3" parent="." unique_id=1865220487 instance=ExtResource("3_lquwl")]
+position = Vector2(672, 544)
+
+[node name="PrinterSlot" parent="PrinterTable3" index="1" unique_id=173568912]
+tier = ExtResource("6_4c57u")
+
 [node name="Player" parent="." unique_id=2088812814 instance=ExtResource("1_0xm2m")]
 position = Vector2(232, 544)
+
+[editable path="PrinterTable"]
+[editable path="PrinterTable2"]
+[editable path="PrinterTable3"]

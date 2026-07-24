@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bks2jkvfnlmj"]
+
+[ext_resource type="Texture2D" uid="uid://dyesri60rsxfr" path="res://assets/printer_table.tres" id="1_1gf4m"]
+[ext_resource type="PackedScene" uid="uid://lvbjfb47w2js" path="res://printer_slot.tscn" id="2_s8y4b"]
+
+[node name="PrinterTable" type="Node2D" unique_id=1849543402]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=87546408]
+position = Vector2(16, -48)
+scale = Vector2(4, 4)
+texture = ExtResource("1_1gf4m")
+
+[node name="PrinterSlot" parent="." unique_id=173568912 instance=ExtResource("2_s8y4b")]
+position = Vector2(-30, 0)
+
+[node name="PrinterSlot2" parent="." unique_id=735240593 instance=ExtResource("2_s8y4b")]
+position = Vector2(34, 0)

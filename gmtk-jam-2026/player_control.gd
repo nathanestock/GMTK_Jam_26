@@ -1,6 +1,7 @@
 extends Area2D
 class_name PlayerControl
 
+signal player_entered(player: Player)
 signal accept
 signal select_up
 signal select_down
@@ -8,6 +9,7 @@ signal select_down
 @onready var static_ui = $VBoxContainer/Static
 @onready var player_ui = $VBoxContainer/Player
 
+var player: Player = null
 
 func _ready():
 	if static_ui:
@@ -29,9 +31,12 @@ func _input(event):
 
 func _on_body_entered(body):
 	if body is Player and player_ui:
+		player = body
 		player_ui.show()
+		player_entered.emit(body)
 
 
 func _on_body_exited(body):
 	if body is Player and player_ui:
+		player = null
 		player_ui.hide()

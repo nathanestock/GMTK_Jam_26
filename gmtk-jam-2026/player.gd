@@ -28,28 +28,13 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func on_move_printer(printer: ThreeDPrinter):
-	printer.hide()
-	printer.slot.printer = null
-	printer.slot = null
+func move_printer(printer: ThreeDPrinter):
 	carrying = printer
-	
 	carry_sprite.texture = printer.tier.texture
 	carry_sprite.show()
 
 
-func on_place_printer(slot: PrinterTableSlot):
-	slot.printer = carrying
-	carrying.slot = slot
-	carrying.global_position.x = slot.global_position.x
-	carrying.show()
-	
+func place_printer():	
 	carrying = null
 	carry_sprite.texture = null
 	carry_sprite.hide()
-
-
-func on_swap_carrying(slot: PrinterTableSlot):
-	var current_printer = slot.printer
-	on_place_printer(slot)
-	on_move_printer(current_printer)

@@ -20,7 +20,7 @@ shadow_size = 10
 
 [resource]
 ItemList/colors/font_selected_color = Color(0, 0.8039216, 0.16470589, 1)
-ItemList/font_sizes/font_size = 4
+ItemList/font_sizes/font_size = 12
 Label/colors/font_color = Color(0.68235296, 0.77254903, 0.92156863, 1)
-Label/font_sizes/font_size = 4
+Label/font_sizes/font_size = 12
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ued3c")

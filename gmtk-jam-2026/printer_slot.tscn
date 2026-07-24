@@ -1,22 +1,20 @@
 [gd_scene format=3 uid="uid://lvbjfb47w2js"]
 
 [ext_resource type="PackedScene" uid="uid://sskh05xd2oop" path="res://player_control.tscn" id="1_dqxn2"]
-[ext_resource type="Texture2D" uid="uid://bqr8btqu7ea4i" path="res://assets/tier1_printer.tres" id="1_ucvfv"]
+[ext_resource type="Script" uid="uid://bcke6kgbk54yk" path="res://printer_slot.gd" id="1_q1hwv"]
 [ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_q1hwv"]
 [ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_q1hwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
-size = Vector2(6, 11)
+size = Vector2(20, 44)
 
 [node name="PrinterSlot" type="Node2D" unique_id=173568912]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2142953392]
-position = Vector2(0, -33)
-texture = ExtResource("1_ucvfv")
+script = ExtResource("1_q1hwv")
 
 [node name="PlayerControl" parent="." unique_id=1868566654 instance=ExtResource("1_dqxn2")]
 
 [node name="PrintAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=1555896602]
+visible = false
 layout_mode = 2
 theme = ExtResource("3_q1hwv")
 
@@ -78,16 +76,34 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="PanelContainer" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 1919007090) index="0" unique_id=2014665928]
+[node name="PickupAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="4" unique_id=93275793]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+
+[node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/PickupAction" unique_id=1776300249]
+layout_mode = 2
+theme = ExtResource("3_q1hwv")
+text = "pickup [space]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="PrintingCountdown" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 1919007090) index="0" unique_id=2014665928]
+visible = false
 layout_mode = 2
 offset_transform_position = Vector2(0, 20)
 theme = ExtResource("3_q1hwv")
 
-[node name="Countdown" parent="PlayerControl/VBoxContainer/Static/PanelContainer" unique_id=93846558 instance=ExtResource("4_q1hwv")]
+[node name="Countdown" parent="PlayerControl/VBoxContainer/Static/PrintingCountdown" unique_id=93846558 instance=ExtResource("4_q1hwv")]
 layout_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerControl" unique_id=360217408]
-position = Vector2(0, -30)
+position = Vector2(0, -118)
 shape = SubResource("RectangleShape2D_e8xbq")
+
+[connection signal="accept" from="PlayerControl" to="." method="_on_player_control_accept"]
+[connection signal="player_entered" from="PlayerControl" to="." method="_on_player_control_player_entered"]
+[connection signal="select_up" from="PlayerControl" to="." method="_on_player_control_select_up"]
 
 [editable path="PlayerControl"]
