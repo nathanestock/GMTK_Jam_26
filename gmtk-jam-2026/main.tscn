@@ -14,6 +14,7 @@
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=445633741]
 anchor_mode = 0
+zoom = Vector2(6, 6)
 
 [node name="Room" parent="." unique_id=730556488 instance=ExtResource("1_lquwl")]
 
@@ -52,7 +53,4 @@ printer = NodePath("../../3DPrinter2")
 printer = NodePath("../../3DPrinter3")
 
 [node name="Player" parent="." unique_id=2088812814 instance=ExtResource("1_0xm2m")]
-position = Vector2(232, 600)
-
-[editable path="Table"]
-[editable path="Table2"]
+position = Vector2(60, 256)
