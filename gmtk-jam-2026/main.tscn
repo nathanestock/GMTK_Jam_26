@@ -25,18 +25,8 @@ player = NodePath("../Player")
 [node name="Mailbox" parent="." unique_id=1543192527 instance=ExtResource("3_lquwl")]
 position = Vector2(984, 600)
 
-[node name="Table" parent="." unique_id=1504792125 instance=ExtResource("9_kek77")]
-position = Vector2(416, 600)
-
-[node name="Table2" parent="." unique_id=57874827 instance=ExtResource("9_kek77")]
-position = Vector2(672, 600)
-
 [node name="3DPrinter" parent="." unique_id=1096942018 instance=ExtResource("4_lquwl")]
 position = Vector2(368, 448)
-tier = ExtResource("4_5vw27")
-
-[node name="3DPrinter4" parent="." unique_id=353726279 instance=ExtResource("4_lquwl")]
-position = Vector2(464, 448)
 tier = ExtResource("4_5vw27")
 
 [node name="3DPrinter2" parent="." unique_id=2027950830 instance=ExtResource("4_lquwl")]
@@ -46,6 +36,21 @@ tier = ExtResource("5_kek77")
 [node name="3DPrinter3" parent="." unique_id=688042853 instance=ExtResource("4_lquwl")]
 position = Vector2(720, 448)
 tier = ExtResource("6_4c57u")
+
+[node name="Table" parent="." unique_id=1504792125 instance=ExtResource("9_kek77")]
+position = Vector2(416, 600)
+
+[node name="PrinterSlot" parent="Table" index="1" unique_id=979376716 node_paths=PackedStringArray("printer")]
+printer = NodePath("../../3DPrinter")
+
+[node name="Table2" parent="." unique_id=57874827 instance=ExtResource("9_kek77")]
+position = Vector2(672, 600)
+
+[node name="PrinterSlot" parent="Table2" index="1" unique_id=979376716 node_paths=PackedStringArray("printer")]
+printer = NodePath("../../3DPrinter2")
+
+[node name="PrinterSlot2" parent="Table2" index="2" unique_id=1532281843 node_paths=PackedStringArray("printer")]
+printer = NodePath("../../3DPrinter3")
 
 [node name="Player" parent="." unique_id=2088812814 instance=ExtResource("1_0xm2m")]
 position = Vector2(60, 256)

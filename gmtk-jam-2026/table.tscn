@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://domnvf0qnycmf"]
 
 [ext_resource type="Texture2D" uid="uid://o8ii68jtvwbd" path="res://assets/Static_Objects.png" id="1_jd0nb"]
+[ext_resource type="PackedScene" uid="uid://cedcb2c6vmfb4" path="res://printers/printer_table_slot.tscn" id="3_kl0hw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8xbq"]
 atlas = ExtResource("1_jd0nb")
@@ -12,3 +13,9 @@ region = Rect2(40, 32, 48, 32)
 position = Vector2(0, -96)
 scale = Vector2(6, 6)
 texture = SubResource("AtlasTexture_e8xbq")
+
+[node name="PrinterSlot" parent="." unique_id=979376716 instance=ExtResource("3_kl0hw")]
+position = Vector2(-48, -152)
+
+[node name="PrinterSlot2" parent="." unique_id=1532281843 instance=ExtResource("3_kl0hw")]
+position = Vector2(48, -152)
