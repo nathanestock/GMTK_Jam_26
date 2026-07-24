@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bks2jkvfnlmj"]
 
 [ext_resource type="Texture2D" uid="uid://dyesri60rsxfr" path="res://assets/printer_table.tres" id="1_1gf4m"]
-[ext_resource type="PackedScene" uid="uid://lvbjfb47w2js" path="res://printer_slot.tscn" id="2_s8y4b"]
+[ext_resource type="PackedScene" uid="uid://lvbjfb47w2js" path="res://printers/printer_slot.tscn" id="2_s8y4b"]
 
 [node name="PrinterTable" type="Node2D" unique_id=1849543402]
 

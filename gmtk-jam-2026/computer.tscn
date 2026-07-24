@@ -23,7 +23,7 @@ texture = ExtResource("2_18hgq")
 visible = false
 layout_mode = 2
 theme = ExtResource("3_4xfga")
-text = "no available colors"
+text = "BUY NEW COLOR"
 uppercase = true
 
 [node name="PendingJobAlert" type="Label" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="1" unique_id=97022145]
@@ -33,7 +33,15 @@ theme = ExtResource("3_4xfga")
 text = "assign to printers"
 uppercase = true
 
-[node name="ChooseJobPanel" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="2" unique_id=1801219268]
+[node name="NoJobsAlert" type="Label" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="2" unique_id=164940921]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_4xfga")
+text = "waiting for jobs"
+uppercase = true
+
+[node name="ChooseJobPanel" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="3" unique_id=1801219268]
+visible = false
 layout_mode = 2
 theme = ExtResource("3_4xfga")
 

@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://c3eo6cqsrha2a" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d168uwm2mfwar" path="res://room.tscn" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://1nq6fa488rg" path="res://computer.tscn" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://bks2jkvfnlmj" path="res://printer_table.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bks2jkvfnlmj" path="res://printers/printer_table.tscn" id="3_lquwl"]
 [ext_resource type="Resource" uid="uid://dpg2mvpfioy5r" path="res://printers/printer_tier_1.tres" id="4_5vw27"]
 [ext_resource type="Resource" uid="uid://ddd47swujl7qu" path="res://printers/printer_tier_2.tres" id="5_kek77"]
 [ext_resource type="Resource" uid="uid://fep7f12o5uky" path="res://printers/printer_tier_3.tres" id="6_4c57u"]
+[ext_resource type="PackedScene" uid="uid://b8412w5jcg1c5" path="res://mailbox.tscn" id="7_5vw27"]
 
 [node name="main" type="Node2D" unique_id=1447262448]
 
@@ -35,6 +36,9 @@ position = Vector2(672, 544)
 
 [node name="PrinterSlot" parent="PrinterTable3" index="1" unique_id=173568912]
 tier = ExtResource("6_4c57u")
+
+[node name="Mailbox" parent="." unique_id=1543192527 instance=ExtResource("7_5vw27")]
+position = Vector2(912, 544)
 
 [node name="Player" parent="." unique_id=2088812814 instance=ExtResource("1_0xm2m")]
 position = Vector2(232, 544)

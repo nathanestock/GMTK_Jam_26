@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://lvbjfb47w2js"]
 
 [ext_resource type="PackedScene" uid="uid://sskh05xd2oop" path="res://player_control.tscn" id="1_dqxn2"]
-[ext_resource type="Script" uid="uid://bcke6kgbk54yk" path="res://printer_slot.gd" id="1_q1hwv"]
+[ext_resource type="Script" uid="uid://bcke6kgbk54yk" path="res://printers/printer_slot.gd" id="1_q1hwv"]
 [ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_q1hwv"]
 [ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_q1hwv"]
+[ext_resource type="PackedScene" uid="uid://xyntmes0b4cu" path="res://ui/item_list_ui.tscn" id="4_wa1qt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
 size = Vector2(20, 44)
@@ -28,6 +29,9 @@ text = "print [space]"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="ItemListUI" parent="PlayerControl/VBoxContainer/Player/PrintAction/VBoxContainer" unique_id=650753412 instance=ExtResource("4_wa1qt")]
+layout_mode = 2
 
 [node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/PrintAction/VBoxContainer" unique_id=1176940523]
 layout_mode = 2
@@ -89,13 +93,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="PrintingCountdown" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 1919007090) index="0" unique_id=2014665928]
+[node name="PrintingCountdown" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=2014665928]
 visible = false
 layout_mode = 2
 offset_transform_position = Vector2(0, 20)
 theme = ExtResource("3_q1hwv")
 
 [node name="Countdown" parent="PlayerControl/VBoxContainer/Static/PrintingCountdown" unique_id=93846558 instance=ExtResource("4_q1hwv")]
+layout_mode = 2
+
+[node name="PrintFinishedAlert" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="1" unique_id=2106865844]
+visible = false
+layout_mode = 2
+offset_transform_position = Vector2(0, 20)
+theme = ExtResource("3_q1hwv")
+
+[node name="ItemListUI" parent="PlayerControl/VBoxContainer/Static/PrintFinishedAlert" unique_id=1246662274 instance=ExtResource("4_wa1qt")]
 layout_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerControl" unique_id=360217408]

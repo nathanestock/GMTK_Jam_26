@@ -7,9 +7,16 @@ class_name PrintJob
 @export var color: Color = Color.TRANSPARENT
 
 
-func is_completed():
+func set_color(c: Color):
+	color = c
+	
+	for item in items:
+		item.color = c
+
+
+func is_ready_to_ship():
 	return items.all(func (i): return i.is_completed())
 
 
-func is_open():
-	return items.any(func (i): return i.is_open())
+func get_unassigned_items() -> Array[PrintItem]:
+	return items.filter(func (i): return i.is_unassigned())

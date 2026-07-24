@@ -1,6 +1,7 @@
 extends Resource
 class_name PrintItem
 
+@export var job: PrintJob
 @export var material: int = 0
 @export var print_time: int = 0
 
@@ -9,7 +10,7 @@ var state: State = State.REQUIRED
 
 enum State { REQUIRED, PRINTING, COMPLETED }
 
-func is_open():
+func is_unassigned():
 	return state == State.REQUIRED
 
 

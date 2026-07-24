@@ -12,11 +12,25 @@ const printer_position = Vector2(-2, -96)
 @onready var place_action = $PlayerControl/VBoxContainer/Player/PlaceAction
 @onready var swap_action = $PlayerControl/VBoxContainer/Player/SwapAction
 @onready var pickup_action = $PlayerControl/VBoxContainer/Player/PickupAction
+@onready var print_item_list = $PlayerControl/VBoxContainer/Player/PrintAction/VBoxContainer/ItemListUI
+@onready var printing_countdown = $PlayerControl/VBoxContainer/Static/PrintingCountdown/Countdown
+@onready var printing_countdown_ui = $PlayerControl/VBoxContainer/Static/PrintingCountdown
+@onready var print_finished_ui = $PlayerControl/VBoxContainer/Static/PrintFinishedAlert
+@onready var print_finished_list = $PlayerControl/VBoxContainer/Static/PrintFinishedAlert/ItemListUI
 
 var printer: ThreeDPrinter
 
 
 func _ready():
+	JobManager.unassigned_items.connect(_on_unassigned_items)
+	
+	print_action.hide()
+	move_action.hide()
+	place_action.hide()
+	swap_action.hide()
+	pickup_action.hide()
+	printing_countdown_ui.hide()
+	
 	if tier:
 		printer = printer_scene.instantiate()
 		printer.tier = tier
@@ -29,11 +43,38 @@ func _ready():
 
 func _on_player_control_accept():
 	if print_action.visible:
-		# print items
-		pass
+		var print_items = print_item_list.items
+		printer.start_printing(printing_countdown, print_items)
+		printer.finished_printing.connect(_on_finished_printing)
+		
+		JobManager.on_player_printing_items(print_items)
+		
+		print_action.hide()
+		printing_countdown_ui.show()
 	elif pickup_action.visible:
-		# pickup items
-		pass
+		printer.on_picked_up_items()
+		
+		JobManager.on_player_picking_up_items(print_finished_list.items)
+		
+		_on_unassigned_items(JobManager.get_unassigned_items())
+		
+		print_finished_ui.hide()
+		pickup_action.hide()
+
+
+func _on_finished_printing(items: Array[PrintItem]):
+	printer.finished_printing.disconnect(_on_finished_printing)
+	
+	printing_countdown_ui.hide()
+	
+	print_finished_list.clear()
+		
+	for item in items:
+		print_finished_list.add_item(item)
+	
+	print_finished_ui.show()
+	
+	pickup_action.show()
 
 
 func _on_player_control_select_up():
@@ -46,11 +87,24 @@ func _on_player_control_select_up():
 		_on_swap_printer()
 
 
-func _on_items_to_print(items: Array[PrintItem]):
+func _on_unassigned_items(items: Array[PrintItem]):
 	if printer and printer.is_idle():
+		if items.size() == 0:
+			print_action.hide()
+			return
+		
 		move_action.hide()
+		
+		print_item_list.clear()
+		
+		for item in items:
+			print_item_list.add_item(item)
+			
+			if print_item_list.items.size() >= printer.tier.max_items:
+				print("can_print: {print}, max_items: {d}".format({ "print": print_item_list.items, "d": printer.tier.max_items }))
+				break
+		
 		print_action.show()
-		# set items to print UI
 
 
 func _on_player_control_player_entered(player: Player):
@@ -61,7 +115,8 @@ func _on_player_control_player_entered(player: Player):
 		elif printer.is_idle():
 			swap_action.show()
 	elif printer:
-		move_action.show()
+		if not print_action.visible and printer.is_idle():
+			move_action.show()
 		place_action.hide()
 		swap_action.hide()
 	else:

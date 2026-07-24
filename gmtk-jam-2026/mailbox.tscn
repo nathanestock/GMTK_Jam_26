@@ -2,68 +2,43 @@
 
 [ext_resource type="Script" uid="uid://dlt457hsotijf" path="res://mailbox.gd" id="1_oanx3"]
 [ext_resource type="Texture2D" uid="uid://cnfsa587uhj7s" path="res://assets/package_table.tres" id="2_15j57"]
-[ext_resource type="Texture2D" uid="uid://ckgi4kjk3xjct" path="res://assets/package.tres" id="3_fqaqs"]
+[ext_resource type="PackedScene" uid="uid://sskh05xd2oop" path="res://player_control.tscn" id="3_15j57"]
+[ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="4_fqaqs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ha6t8"]
-size = Vector2(176, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
+size = Vector2(120, 32)
 
 [node name="Mailbox" type="Node2D" unique_id=1543192527]
 script = ExtResource("1_oanx3")
 
 [node name="Table" type="Sprite2D" parent="." unique_id=1298615718]
-position = Vector2(8, -72)
-scale = Vector2(6, 6)
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
 texture = ExtResource("2_15j57")
 
-[node name="Package_1" type="Sprite2D" parent="." unique_id=1920704756]
-position = Vector2(0, -152)
-scale = Vector2(6, 6)
-texture = ExtResource("3_fqaqs")
+[node name="PlayerControl" parent="." unique_id=1868566654 instance=ExtResource("3_15j57")]
 
-[node name="Package_2" type="Sprite2D" parent="." unique_id=2096747446]
-position = Vector2(-56, -152)
-scale = Vector2(6, 6)
-texture = ExtResource("3_fqaqs")
-
-[node name="Package_3" type="Sprite2D" parent="." unique_id=429887122]
-position = Vector2(56.000004, -152)
-scale = Vector2(6, 6)
-texture = ExtResource("3_fqaqs")
-
-[node name="ReadyToDeliverJobs" type="HBoxContainer" parent="." unique_id=853832115]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -88.0
-offset_top = -232.0
-offset_right = 86.0
-offset_bottom = -192.0
-grow_horizontal = 2
-grow_vertical = 0
-offset_transform_enabled = true
-offset_transform_position = Vector2(-12, -24)
-theme_override_constants/separation = 12
-alignment = 2
-
-[node name="Button" type="Button" parent="ReadyToDeliverJobs" unique_id=1080115950]
-visible = false
+[node name="ShipAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=121255546]
 layout_mode = 2
-text = "SHIP IT"
+theme = ExtResource("4_fqaqs")
 
-[node name="CompletedJobList" type="VBoxContainer" parent="ReadyToDeliverJobs" unique_id=9610336]
-custom_minimum_size = Vector2(100, 0)
+[node name="Label" type="Label" parent="PlayerControl/VBoxContainer/Player/ShipAction" unique_id=1870378175]
 layout_mode = 2
-theme_override_constants/separation = 32
+theme = ExtResource("4_fqaqs")
+text = "ship [space]"
+uppercase = true
 
-[node name="Area2D" type="Area2D" parent="." unique_id=798140632]
+[node name="ReadyToShipAlert" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=1713262824]
+layout_mode = 2
+theme = ExtResource("4_fqaqs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=562128933]
-position = Vector2(0, -152)
-shape = SubResource("RectangleShape2D_ha6t8")
+[node name="ReadyToShipJobs" type="VBoxContainer" parent="PlayerControl/VBoxContainer/Static/ReadyToShipAlert" unique_id=81312387]
+layout_mode = 2
 
-[connection signal="pressed" from="ReadyToDeliverJobs/Button" to="." method="_on_button_pressed"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerControl" unique_id=1079423077]
+position = Vector2(-4, -100)
+shape = SubResource("RectangleShape2D_e8xbq")
+
+[connection signal="accept" from="PlayerControl" to="." method="_on_player_control_accept"]
+
+[editable path="PlayerControl"]

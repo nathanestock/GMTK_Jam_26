@@ -1,8 +1,6 @@
 extends PanelContainer
 class_name PrintJobUI
 
-signal expired
-
 @export var job: PrintJob
 
 @onready var countdown = $VBoxContainer/Countdown
@@ -34,8 +32,21 @@ func _ready():
 
 
 func _on_countdown_timeout():
-	expired.emit()
-	queue_free()
+	var timer = Timer.new()
+	
+	timer.autostart = true
+	timer.timeout.connect(func ():
+		job.reward -= 5
+		
+		if job.reward <= 0:
+			job.reward = 0
+			
+			timer.queue_free()
+		
+		reward_label.text = "+ $%d" % job.reward
+	)
+	
+	add_child(timer)
 
 
 func update_items():
