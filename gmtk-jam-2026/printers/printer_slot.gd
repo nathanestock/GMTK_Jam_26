@@ -81,7 +81,7 @@ func _on_finished_printing(items: Array[PrintItem]):
 
 func _on_player_control_select_up():
 	# PlayerControl.select_up [W] is used for move/place/swap
-	if move_action.visible:
+	if move_action.visible or print_action.visible:
 		_on_move_printer()
 	elif place_action.visible:
 		_on_place_printer()
@@ -93,9 +93,8 @@ func _on_unassigned_items(items: Array[PrintItem]):
 	if printer and printer.is_idle():
 		if items.size() == 0:
 			print_action.hide()
+			move_action.show()
 			return
-		
-		move_action.hide()
 		
 		print_item_list.clear()
 		
@@ -106,19 +105,21 @@ func _on_unassigned_items(items: Array[PrintItem]):
 				print("can_print: {print}, max_items: {d}".format({ "print": print_item_list.items, "d": printer.tier.max_items }))
 				break
 		
+		move_action.hide()
 		print_action.show()
 
 
 func _on_player_control_player_entered(player: Player):
 	if player.carrying:
 		move_action.hide()
+		print_action.hide()
 		if not printer:
 			place_action.show()
 		elif printer.is_idle():
 			swap_action.show()
 	elif printer:
 		if not print_action.visible and printer.is_idle():
-			move_action.show()
+			_on_unassigned_items(JobManager.get_unassigned_items())
 		place_action.hide()
 		swap_action.hide()
 	else:
@@ -132,6 +133,7 @@ func _on_move_printer():
 	remove_child(printer)
 	printer = null
 	
+	print_action.hide()
 	move_action.hide()
 	place_action.show()
 
@@ -144,7 +146,8 @@ func _on_place_printer():
 	add_child(printer)
 	
 	place_action.hide()
-	move_action.show()
+	
+	_on_unassigned_items(JobManager.get_unassigned_items())
 
 
 func _on_swap_printer():

@@ -13,6 +13,7 @@ size = Vector2(32, 44)
 script = ExtResource("1_q1hwv")
 
 [node name="PlayerControl" parent="." unique_id=1868566654 instance=ExtResource("1_dqxn2")]
+allow_while_carrying = true
 
 [node name="PrintAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=1555896602]
 visible = false

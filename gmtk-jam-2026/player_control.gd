@@ -6,10 +6,13 @@ signal accept
 signal select_up
 signal select_down
 
+@export var allow_while_carrying = false
+
 @onready var static_ui = $VBoxContainer/Static
 @onready var player_ui = $VBoxContainer/Player
 
 var player: Player = null
+
 
 func _ready():
 	if static_ui:
@@ -32,6 +35,10 @@ func _input(event):
 func _on_body_entered(body):
 	if body is Player and player_ui:
 		player = body
+		
+		if player.carrying and not allow_while_carrying:
+			return
+		
 		player_ui.show()
 		player_entered.emit(body)
 
