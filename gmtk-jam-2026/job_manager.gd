@@ -8,7 +8,7 @@ signal ready_to_ship(job: PrintJob)
 signal win_game
 
 @export var money_to_win = 100
-@export var starting_money = 20
+@export var starting_money = 0
 
 const print_job_ui = preload("res://ui/print_job_ui.tscn")
 const item_circle = preload("res://assets/item_circle.tres")
@@ -46,6 +46,7 @@ func _ready():
 
 func on_play_game():
 	print("Play")
+	
 	play_ui.hide()
 	win_ui.hide()
 	
@@ -60,8 +61,8 @@ func _on_win_game():
 	print("You win!")
 	win_ui.show()
 	
-	list_hbox.show()
-	money_ui.show()
+	list_hbox.hide()
+	money_ui.hide()
 
 
 func on_keep_playing():
@@ -82,6 +83,9 @@ func on_quit():
 	win_ui.hide()
 	list_hbox.hide()
 	money_ui.hide()
+	
+	jobs = []
+	_render_jobs_ui()
 
 
 func create_new_jobs() -> Array[PrintJob]:

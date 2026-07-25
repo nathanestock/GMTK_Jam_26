@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3eo6cqsrha2a"]
 
 [ext_resource type="Script" uid="uid://duyxtehvgnktt" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Material" uid="uid://bp0u1y863fnsc" path="res://assets/drop_shadow_2.tres" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://dtg5mdssssvfm" path="res://assets/Character.png" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
@@ -11,18 +12,21 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_4flbx")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=210314792]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1344898009]
+position = Vector2(0, -96)
+shape = SubResource("RectangleShape2D_e8xbq")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=28230319]
+material = ExtResource("2_i3pqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup" unique_id=210314792]
 position = Vector2(0, -96)
 scale = Vector2(4, 4)
 texture = ExtResource("2_onrkg")
 region_enabled = true
 region_rect = Rect2(0, 16, 16, 48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1344898009]
-position = Vector2(0, -96)
-shape = SubResource("RectangleShape2D_e8xbq")
-
-[node name="CarryPrinter" type="Sprite2D" parent="." unique_id=830371846]
+[node name="CarryPrinter" type="Sprite2D" parent="CanvasGroup" unique_id=830371846]
 visible = false
 position = Vector2(0, -112)
 scale = Vector2(4, 4)

@@ -25,7 +25,6 @@ Helpers="*uid://guey00ap4ps5"
 window/size/viewport_width=1024
 window/size/viewport_height=576
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [dotnet]
 

@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4d37"]
 bg_color = Color(0, 0, 0, 0.78431374)
 
-[node name="JobManager" type="CanvasLayer" unique_id=1337043993]
+[node name="JobManager" type="CanvasLayer" unique_id=1188520672]
 script = ExtResource("1_23jyf")
 
 [node name="JobListUI" type="HBoxContainer" parent="." unique_id=1165958978]
@@ -131,16 +131,8 @@ theme_override_font_sizes/font_size = 20
 text = "Keep Playing [Space]"
 horizontal_alignment = 1
 
-[node name="Restart" type="Label" parent="YouWin/VBoxContainer" unique_id=861951362]
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(0, -50)
-theme = ExtResource("3_hifh1")
-theme_override_font_sizes/font_size = 20
-text = "Restart [W]"
-horizontal_alignment = 1
-
 [node name="Quit" type="Label" parent="YouWin/VBoxContainer" unique_id=224826021]
+visible = false
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -50)

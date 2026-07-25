@@ -6,8 +6,8 @@ const CARRY_SPEED = 200.0
 const ACCELERATION = 1000.0
 const FRICTION = 3000.0
 
-@onready var sprite = $Sprite2D
-@onready var carry_sprite = $CarryPrinter
+@onready var sprite = $CanvasGroup/Sprite2D
+@onready var carry_sprite = $CanvasGroup/CarryPrinter
 
 var carrying: ThreeDPrinter
 

@@ -7,6 +7,10 @@ signal timeout
 @onready var timer = $Timer
 
 
+func _ready():
+	add_to_group("Countdown")
+
+
 func _process(_delta):
 	if not timer.is_stopped():
 		label.text = str(int(timer.time_left))
@@ -26,3 +30,11 @@ func set_label(text: String):
 
 func _on_timer_timeout():
 	timeout.emit()
+
+
+func pause():
+	timer.paused = true
+
+
+func play():
+	timer.paused = false

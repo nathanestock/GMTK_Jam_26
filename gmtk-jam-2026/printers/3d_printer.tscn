@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://dhvam6x6dlher"]
 
+[ext_resource type="Material" uid="uid://bp0u1y863fnsc" path="res://assets/drop_shadow_2.tres" id="1_jye6a"]
 [ext_resource type="Script" uid="uid://bcl02xkwrvpr" path="res://printers/3d_printer.gd" id="1_pmq5y"]
 [ext_resource type="Texture2D" uid="uid://bqr8btqu7ea4i" path="res://assets/tier1_printer.tres" id="2_0137j"]
 
-[node name="3DPrinter" type="Node2D" unique_id=1096942018]
+[node name="3DPrinter" type="CanvasGroup" unique_id=2112297689]
+material = ExtResource("1_jye6a")
 script = ExtResource("1_pmq5y")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1651239532]

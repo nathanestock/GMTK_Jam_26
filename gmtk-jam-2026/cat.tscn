@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://m1qvg6lgoqwf" path="res://assets/PIxelFont.ttf" id="3_2u0g4"]
 [ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_2hdoq"]
 [ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="4_eyw7o"]
+[ext_resource type="Material" uid="uid://bp0u1y863fnsc" path="res://assets/drop_shadow_2.tres" id="7_eyw7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv1sw"]
 size = Vector2(64, 64)
@@ -181,7 +182,10 @@ layout_mode = 2
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_kek77")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=229440210]
+[node name="CanvasGroup2" type="CanvasGroup" parent="." unique_id=1030834119]
+material = ExtResource("7_eyw7o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasGroup2" unique_id=229440210]
 position = Vector2(0, -32)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5vw27")

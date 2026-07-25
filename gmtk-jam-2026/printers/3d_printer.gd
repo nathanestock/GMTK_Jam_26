@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasGroup
 class_name ThreeDPrinter
 
 signal finished_printing(items: Array[PrintItem])

@@ -6,7 +6,7 @@ const FRICTION = 5000.0
 
 @export var travel_range: Vector2 # x_min, x_max
 
-@onready var animations = $AnimatedSprite2D
+@onready var animations = $CanvasGroup2/AnimatedSprite2D
 @onready var cat_control = $CanvasGroup/CatControl
 @onready var cat_countdown = $CanvasGroup/CatControl/Labels/Static/Countdown
 @onready var needs_pet_timer = $NeedsPetTimer
