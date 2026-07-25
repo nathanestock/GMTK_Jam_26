@@ -61,6 +61,8 @@ func _on_keep_playing():
 
 
 func _on_quit():
+	return # TODO figure out game reset
+	
 	state = State.PLAY_GAME
 	
 	_toggle_player_controls(false)

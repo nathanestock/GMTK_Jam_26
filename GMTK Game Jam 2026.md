@@ -13,6 +13,8 @@ TODO:
 [X] - version 1 build
 [ ] - sanity system, lose game
 [ ] - shop
-[ ] - add sound effects
+[X] - add sound effects
 [ ] - cat attack, print failure
-[ ] - animations
+[X] - player animation
+[ ] - printer animation
+[ ] - music

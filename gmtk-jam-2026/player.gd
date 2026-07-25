@@ -26,8 +26,11 @@ func _physics_process(delta):
 			sprite.flip_h = false
 		elif direction < 0:
 			sprite.flip_h = true
+		
+		sprite.play("Walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
+		sprite.play("Idle")
 
 	move_and_slide()
 
