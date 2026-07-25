@@ -48,6 +48,7 @@ position = Vector2(232, 544)
 
 [node name="Cat" parent="." unique_id=986687164 instance=ExtResource("9_kek77")]
 position = Vector2(764, 544)
+travel_range = Vector2(200, 900)
 
 [editable path="PrinterTable"]
 [editable path="PrinterTable2"]

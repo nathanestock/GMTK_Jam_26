@@ -1,22 +1,18 @@
 [gd_scene format=3 uid="uid://buiron53yesdh"]
 
 [ext_resource type="Script" uid="uid://betugt014kvyh" path="res://cat.gd" id="1_w46py"]
+[ext_resource type="Material" uid="uid://cq28xl75dch7p" path="res://ui/drop_shadow_material.tres" id="2_2v165"]
 [ext_resource type="Script" uid="uid://b7y02knbkccb1" path="res://cat_control.gd" id="2_6fl1u"]
 [ext_resource type="Texture2D" uid="uid://bdq3ilnmvp4ow" path="res://assets/Black_Cat_Sprite_Sheet.png" id="2_52fj1"]
 [ext_resource type="FontFile" uid="uid://m1qvg6lgoqwf" path="res://assets/PIxelFont.ttf" id="3_2u0g4"]
 [ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_2hdoq"]
+[ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="4_eyw7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv1sw"]
 size = Vector2(64, 64)
 
 [sub_resource type="LabelSettings" id="LabelSettings_w46py"]
 font = ExtResource("3_2u0g4")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpeei"]
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
 size = Vector2(64, 64)
@@ -141,40 +137,45 @@ animations = [{
 }]
 
 [node name="Cat" type="CharacterBody2D" unique_id=986687164]
-collision_layer = 0
+collision_layer = 8
 script = ExtResource("1_w46py")
 
-[node name="CatControl" type="Area2D" parent="." unique_id=492501451]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=463242746]
+material = ExtResource("2_2v165")
+
+[node name="CatControl" type="Area2D" parent="CanvasGroup" unique_id=492501451]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("2_6fl1u")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CatControl" unique_id=10579110]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/CatControl" unique_id=10579110]
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_tv1sw")
 
-[node name="Labels" type="VBoxContainer" parent="CatControl" unique_id=1075036790]
+[node name="Labels" type="VBoxContainer" parent="CanvasGroup/CatControl" unique_id=1075036790]
 offset_left = -32.0
 offset_top = -104.0
 offset_right = 32.0
 offset_bottom = -53.0
 alignment = 2
 
-[node name="Player" type="HBoxContainer" parent="CatControl/Labels" unique_id=417974052]
+[node name="Player" type="HBoxContainer" parent="CanvasGroup/CatControl/Labels" unique_id=417974052]
 layout_mode = 2
 alignment = 1
 
-[node name="Pet" type="Label" parent="CatControl/Labels/Player" unique_id=311617219]
+[node name="Pet" type="Label" parent="CanvasGroup/CatControl/Labels/Player" unique_id=311617219]
 layout_mode = 2
+theme = ExtResource("4_eyw7o")
 text = "Pet [F]"
 label_settings = SubResource("LabelSettings_w46py")
 
-[node name="Static" type="HBoxContainer" parent="CatControl/Labels" unique_id=156127111]
+[node name="Static" type="HBoxContainer" parent="CanvasGroup/CatControl/Labels" unique_id=156127111]
 layout_mode = 2
 alignment = 1
 
-[node name="Countdown" parent="CatControl/Labels/Static" unique_id=93846558 instance=ExtResource("4_2hdoq")]
+[node name="Countdown" parent="CanvasGroup/CatControl/Labels/Static" unique_id=1680696170 instance=ExtResource("4_2hdoq")]
+visible = false
 layout_mode = 2
-theme = null
-theme_override_styles/panel = SubResource("StyleBoxFlat_rpeei")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627916596]
 position = Vector2(0, -32)
@@ -188,8 +189,16 @@ animation = &"Sit"
 autoplay = "Sit"
 frame_progress = 0.9682379
 
-[node name="Timer" type="Timer" parent="." unique_id=2010982218]
+[node name="NeedsPetTimer" type="Timer" parent="." unique_id=2010982218]
 
-[connection signal="body_entered" from="CatControl" to="CatControl" method="_on_body_entered"]
-[connection signal="body_exited" from="CatControl" to="CatControl" method="_on_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="TravelTimer" type="Timer" parent="." unique_id=747670265]
+one_shot = true
+
+[node name="SleepTimer" type="Timer" parent="." unique_id=1355838476]
+one_shot = true
+
+[connection signal="body_entered" from="CanvasGroup/CatControl" to="CanvasGroup/CatControl" method="_on_body_entered"]
+[connection signal="body_exited" from="CanvasGroup/CatControl" to="CanvasGroup/CatControl" method="_on_body_exited"]
+[connection signal="timeout" from="NeedsPetTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TravelTimer" to="." method="_on_travel_timer_timeout"]
+[connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
