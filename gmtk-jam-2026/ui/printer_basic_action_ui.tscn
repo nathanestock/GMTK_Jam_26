@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b7mm738w7p8p2"]
+
+[ext_resource type="Script" uid="uid://cndip1y4vloxq" path="res://ui/printer_basic_action_ui.gd" id="1_uivo3"]
+[ext_resource type="Texture2D" uid="uid://s6hbddstsf5j" path="res://assets/tier1_basic_action_ui.tres" id="1_xlmvf"]
+[ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="2_uivo3"]
+
+[node name="PrinterBasicActionUI" type="Control" unique_id=577846634]
+custom_minimum_size = Vector2(64, 24)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -552.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uivo3")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1951799541]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 64.0
+offset_bottom = 24.0
+texture = ExtResource("1_xlmvf")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=255641497]
+custom_minimum_size = Vector2(64, 28)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_uivo3")
+text = "Move [W]"
+horizontal_alignment = 1
+vertical_alignment = 1

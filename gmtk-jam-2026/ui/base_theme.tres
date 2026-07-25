@@ -23,6 +23,6 @@ shadow_size = 10
 [resource]
 ItemList/colors/font_selected_color = Color(0, 0.8039216, 0.16470589, 1)
 ItemList/font_sizes/font_size = 12
-Label/font_sizes/font_size = 12
+Label/font_sizes/font_size = 14
 Label/fonts/font = ExtResource("1_d8awb")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ued3c")

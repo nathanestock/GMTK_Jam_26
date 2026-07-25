@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://sskh05xd2oop" path="res://player_control.tscn" id="1_dqxn2"]
 [ext_resource type="Script" uid="uid://bcke6kgbk54yk" path="res://printers/printer_slot.gd" id="1_q1hwv"]
-[ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_q1hwv"]
+[ext_resource type="PackedScene" uid="uid://nd1a70wgmrks" path="res://ui/printer_item_action_ui.tscn" id="3_t0hge"]
 [ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_q1hwv"]
-[ext_resource type="PackedScene" uid="uid://xyntmes0b4cu" path="res://ui/item_list_ui.tscn" id="4_wa1qt"]
+[ext_resource type="PackedScene" uid="uid://b7mm738w7p8p2" path="res://ui/printer_basic_action_ui.tscn" id="5_jfqj1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
 size = Vector2(32, 44)
@@ -15,101 +15,41 @@ script = ExtResource("1_q1hwv")
 [node name="PlayerControl" parent="." unique_id=1868566654 instance=ExtResource("1_dqxn2")]
 allow_while_carrying = true
 
-[node name="PrintAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=1555896602]
+[node name="PrintAction" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=934784764 instance=ExtResource("3_t0hge")]
 visible = false
 layout_mode = 2
-theme = ExtResource("3_q1hwv")
+action = "Print [Space]"
+second_action = "Move [W]"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerControl/VBoxContainer/Player/PrintAction" unique_id=1608357437]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PlayerControl/VBoxContainer/Player/PrintAction/VBoxContainer" unique_id=1515275682]
-layout_mode = 2
-theme = ExtResource("3_q1hwv")
-text = "print [space]"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="ItemListUI" parent="PlayerControl/VBoxContainer/Player/PrintAction/VBoxContainer" unique_id=650753412 instance=ExtResource("4_wa1qt")]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/PrintAction/VBoxContainer" unique_id=1176940523]
-layout_mode = 2
-theme = ExtResource("3_q1hwv")
-text = "move [w]"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="MoveAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="1" unique_id=158796601]
+[node name="MoveAction" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="1" unique_id=577846634 instance=ExtResource("5_jfqj1")]
 visible = false
 layout_mode = 2
-theme = ExtResource("3_q1hwv")
+action = "Move [W]"
 
-[node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/MoveAction" unique_id=793948923]
-layout_mode = 2
-theme = ExtResource("3_q1hwv")
-text = "move [w]"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="PlaceAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="2" unique_id=471146084]
+[node name="PlaceAction" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="2" unique_id=45019342 instance=ExtResource("5_jfqj1")]
 visible = false
 layout_mode = 2
-theme = ExtResource("3_q1hwv")
+action = "Place [W]"
 
-[node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/PlaceAction" unique_id=1720062411]
-layout_mode = 2
-theme = ExtResource("3_q1hwv")
-text = "place [W]"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="SwapAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="3" unique_id=1341765836]
+[node name="SwapAction" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="3" unique_id=780581451 instance=ExtResource("5_jfqj1")]
 visible = false
 layout_mode = 2
-theme = ExtResource("3_q1hwv")
+action = "Swap [W]"
 
-[node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/SwapAction" unique_id=1465005047]
-layout_mode = 2
-theme = ExtResource("3_q1hwv")
-text = "swap [w]"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="PickupAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="4" unique_id=93275793]
+[node name="CollectAction" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="4" unique_id=1148709879 instance=ExtResource("5_jfqj1")]
 visible = false
 layout_mode = 2
-theme = ExtResource("3_q1hwv")
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 14)
+action = "Collect [Space]"
 
-[node name="Label2" type="Label" parent="PlayerControl/VBoxContainer/Player/PickupAction" unique_id=1776300249]
-layout_mode = 2
-theme = ExtResource("3_q1hwv")
-text = "pickup [space]"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="PrintingCountdown" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=2014665928]
+[node name="FinishedAlert" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=592810673 instance=ExtResource("3_t0hge")]
 visible = false
 layout_mode = 2
-offset_transform_position = Vector2(0, 20)
-theme = ExtResource("3_q1hwv")
+hide_basic_action = true
 
-[node name="Countdown" parent="PlayerControl/VBoxContainer/Static/PrintingCountdown" unique_id=93846558 instance=ExtResource("4_q1hwv")]
-layout_mode = 2
-
-[node name="PrintFinishedAlert" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="1" unique_id=2106865844]
+[node name="Countdown" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="1" unique_id=93846558 instance=ExtResource("4_q1hwv")]
 visible = false
-layout_mode = 2
-offset_transform_position = Vector2(0, 20)
-theme = ExtResource("3_q1hwv")
-
-[node name="ItemListUI" parent="PlayerControl/VBoxContainer/Static/PrintFinishedAlert" unique_id=1246662274 instance=ExtResource("4_wa1qt")]
 layout_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerControl" unique_id=360217408]

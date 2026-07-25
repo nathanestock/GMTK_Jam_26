@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://nd1a70wgmrks"]
+
+[ext_resource type="Script" uid="uid://dt2l8fm5iawwi" path="res://ui/printer_item_action_ui.gd" id="1_irpyk"]
+[ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="1_lkldb"]
+[ext_resource type="PackedScene" uid="uid://b7mm738w7p8p2" path="res://ui/printer_basic_action_ui.tscn" id="1_u4j2r"]
+[ext_resource type="Texture2D" uid="uid://b6nk5n0j5q2qa" path="res://assets/tier3_item_action_ui.tres" id="3_gni87"]
+[ext_resource type="Texture2D" uid="uid://d0gufepc4ws2n" path="res://assets/item_maze.tres" id="3_u4j2r"]
+
+[node name="PrinterItemActionUI" type="VBoxContainer" unique_id=132249388]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = -63.0
+offset_right = 39.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+script = ExtResource("1_irpyk")
+
+[node name="Label" type="Label" parent="." unique_id=1345005876]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_lkldb")
+text = "Print [Space]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemGridUI" type="Control" parent="." unique_id=398796258]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="GridTexture" type="TextureRect" parent="ItemGridUI" unique_id=1131402975]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 24.0
+size_flags_horizontal = 4
+texture = ExtResource("3_gni87")
+
+[node name="Item1" type="TextureRect" parent="ItemGridUI" unique_id=1596058103]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 48.0
+offset_bottom = 43.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_u4j2r")
+
+[node name="Item2" type="TextureRect" parent="ItemGridUI" unique_id=1635317864]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 3.0
+offset_right = 72.0
+offset_bottom = 43.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_u4j2r")
+
+[node name="Item3" type="TextureRect" parent="ItemGridUI" unique_id=1182629881]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 27.0
+offset_right = 48.0
+offset_bottom = 67.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_u4j2r")
+
+[node name="Item4" type="TextureRect" parent="ItemGridUI" unique_id=1035482552]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 27.0
+offset_right = 72.0
+offset_bottom = 67.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_u4j2r")
+
+[node name="PrinterBasicActionUI" parent="." unique_id=577846634 instance=ExtResource("1_u4j2r")]
+layout_mode = 2
+size_flags_horizontal = 4
