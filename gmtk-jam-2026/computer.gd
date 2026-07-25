@@ -3,9 +3,9 @@ extends Node2D
 
 @onready var player_control = $PlayerControl
 @onready var new_jobs_ui = $PlayerControl/VBoxContainer/Player/NewJobsUI
-@onready var assign_printers_alert = $PlayerControl/VBoxContainer/Static/AssignPrintersAlert
-@onready var no_colors_alert = $PlayerControl/VBoxContainer/Static/NoColorsAlert
-@onready var choose_job_alert = $PlayerControl/VBoxContainer/Static/ChooseJob
+@onready var assign_printers_alert = $PlayerControl/VBoxContainer/Static/CanvasGroup/AssignPrintersAlert
+@onready var no_colors_alert = $PlayerControl/VBoxContainer/Static/CanvasGroup/NoColorsAlert
+@onready var choose_job_alert = $PlayerControl/VBoxContainer/Static/CanvasGroup/ChooseJob
 
 
 func _ready():	

@@ -20,11 +20,14 @@ const item_top = preload("res://assets/item_top.tres")
 @onready var money_ui = $MoneyCounterUI
 
 var jobs: Array[PrintJob] = []
-var available_colors: Array[Color] = [Color.BLUE, Color.RED, Color.GREEN]
+var available_colors: Array[Color] = [Color("a9def9"), Color("fcf6bd"), Color("ff99c8"), Color("d0f4de"), Color("e4c1f9")]
 var available_item_types = [item_circle, item_cross, item_hourglass, item_maze, item_plug, item_pyramid, item_star, item_top]
 
 func _ready():
 	money_ui.set_money(20)
+	
+	for child in list_hbox.get_children():
+		child.free()
 	
 	ready_for_job.connect(func (): print("Ready For Job"))
 	unassigned_items.connect(func (items): print("Unassigned Items: {items}".format({ "items": items })))

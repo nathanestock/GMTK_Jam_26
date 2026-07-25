@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://dlt457hsotijf" path="res://mailbox.gd" id="1_oanx3"]
 [ext_resource type="Texture2D" uid="uid://cnfsa587uhj7s" path="res://assets/package_table.tres" id="2_15j57"]
 [ext_resource type="PackedScene" uid="uid://sskh05xd2oop" path="res://player_control.tscn" id="3_15j57"]
+[ext_resource type="Material" uid="uid://cq28xl75dch7p" path="res://ui/drop_shadow_material.tres" id="3_sq0y7"]
 [ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="4_fqaqs"]
+[ext_resource type="Texture2D" uid="uid://cvo4ej2ng7g2v" path="res://assets/job_list_header.tres" id="6_3kydk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
 size = Vector2(120, 32)
@@ -16,29 +18,65 @@ position = Vector2(4, -64)
 scale = Vector2(4, 4)
 texture = ExtResource("2_15j57")
 
-[node name="PlayerControl" parent="." unique_id=1868566654 instance=ExtResource("3_15j57")]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=967090351]
+material = ExtResource("3_sq0y7")
 
-[node name="ShipAction" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=121255546]
+[node name="PlayerControl" parent="CanvasGroup" unique_id=1868566654 instance=ExtResource("3_15j57")]
+
+[node name="VBoxContainer" parent="CanvasGroup/PlayerControl" index="0" unique_id=90601031]
+offset_transform_position = Vector2(0, -135)
+
+[node name="ShipAction" type="Control" parent="CanvasGroup/PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=577846634]
+custom_minimum_size = Vector2(104, 24)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasGroup/PlayerControl/VBoxContainer/Player/ShipAction" unique_id=1951799541]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 64.0
+offset_bottom = 24.0
+texture = ExtResource("6_3kydk")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasGroup/PlayerControl/VBoxContainer/Player/ShipAction" unique_id=255641497]
+custom_minimum_size = Vector2(64, 28)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_fqaqs")
+text = "Ship [Space]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label" type="Label" parent="PlayerControl/VBoxContainer/Player/ShipAction" unique_id=1870378175]
+[node name="ReadyToShipAlert" type="VBoxContainer" parent="CanvasGroup/PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=1486748274]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CanvasGroup/PlayerControl/VBoxContainer/Static/ReadyToShipAlert" unique_id=450336232]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 5)
 theme = ExtResource("4_fqaqs")
-text = "ship [space]"
-uppercase = true
+text = "Ready To Ship"
+horizontal_alignment = 1
 
-[node name="ReadyToShipAlert" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=1713262824]
+[node name="Packages" type="HBoxContainer" parent="CanvasGroup/PlayerControl/VBoxContainer/Static/ReadyToShipAlert" unique_id=495810451]
 layout_mode = 2
-theme = ExtResource("4_fqaqs")
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 5)
+alignment = 1
 
-[node name="ReadyToShipJobs" type="VBoxContainer" parent="PlayerControl/VBoxContainer/Static/ReadyToShipAlert" unique_id=81312387]
-layout_mode = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerControl" unique_id=1079423077]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/PlayerControl" unique_id=1079423077]
 position = Vector2(0, -100)
 shape = SubResource("RectangleShape2D_e8xbq")
 
-[connection signal="accept" from="PlayerControl" to="." method="_on_player_control_accept"]
+[connection signal="accept" from="CanvasGroup/PlayerControl" to="." method="_on_player_control_accept"]
 
-[editable path="PlayerControl"]
+[editable path="CanvasGroup/PlayerControl"]

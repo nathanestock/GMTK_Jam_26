@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://sskh05xd2oop" path="res://player_control.tscn" id="2_jr5mb"]
 [ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_4xfga"]
 [ext_resource type="PackedScene" uid="uid://oa2bdp11840f" path="res://ui/new_jobs_ui.tscn" id="5_4xfga"]
+[ext_resource type="Material" uid="uid://cq28xl75dch7p" path="res://ui/drop_shadow_material.tres" id="5_wy26k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
 size = Vector2(80, 56)
@@ -24,24 +25,40 @@ layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(10, 0)
 
-[node name="NoColorsAlert" type="Label" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=1165733786]
+[node name="Static" parent="PlayerControl/VBoxContainer" parent_id_path=PackedInt32Array(1868566654, 90601031) index="1" unique_id=147531222]
+custom_minimum_size = Vector2(124, 25)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="PlayerControl/VBoxContainer/Static" index="0" unique_id=360882028]
+material = ExtResource("5_wy26k")
+
+[node name="NoColorsAlert" type="Label" parent="PlayerControl/VBoxContainer/Static/CanvasGroup" unique_id=1165733786]
 visible = false
-layout_mode = 2
+offset_left = 21.0
+offset_top = 5.0
+offset_right = 106.0
+offset_bottom = 20.0
 theme = ExtResource("3_4xfga")
 text = "Buy New Color"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AssignPrintersAlert" type="Label" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="1" unique_id=97022145]
+[node name="AssignPrintersAlert" type="Label" parent="PlayerControl/VBoxContainer/Static/CanvasGroup" unique_id=97022145]
 visible = false
-layout_mode = 2
+offset_left = 18.0
+offset_top = 5.0
+offset_right = 108.0
+offset_bottom = 20.0
 theme = ExtResource("3_4xfga")
 text = "Assign Printers"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChooseJob" type="Label" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="2" unique_id=405651933]
-layout_mode = 2
+[node name="ChooseJob" type="Label" parent="PlayerControl/VBoxContainer/Static/CanvasGroup" unique_id=405651933]
+visible = false
+offset_left = 27.0
+offset_top = 5.0
+offset_right = 97.0
+offset_bottom = 20.0
 theme = ExtResource("3_4xfga")
 text = "Choose Job"
 horizontal_alignment = 1

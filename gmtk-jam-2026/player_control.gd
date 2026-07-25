@@ -33,6 +33,7 @@ func _input(event):
 
 
 func _on_body_entered(body):
+	print(body)
 	if body is Player and player_ui:
 		player = body
 		

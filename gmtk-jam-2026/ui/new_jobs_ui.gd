@@ -1,14 +1,14 @@
-extends VBoxContainer
+extends Control
 class_name NewJobsUI
 
 const option_ui = preload("res://ui/new_job_option_ui.tscn")
 
-@onready var list = $JobsList
+@onready var list = $CanvasGroup/VBoxContainer/JobsList
 
 var selected: int = 0
 var color: Color
 
-func set_jobs(jobs: Array[PrintJob]):	
+func set_jobs(jobs: Array[PrintJob]):
 	for i in list.get_children():
 		i.free()
 		

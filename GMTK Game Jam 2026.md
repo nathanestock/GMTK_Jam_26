@@ -1,11 +1,12 @@
 GMTK Game Jam 2026
 
-What happens to printed items when a job expires?
-
-Maybe remove the new jobs in timer
 
 show money/total required
 
-missing move/place/swap ui
+shipping ui art
 
-have one shared "ship" action above the package table
+
+TODO:
+[ ] - win game system
+[ ] - sanity system, lose game
+[ ] - shop

@@ -6,14 +6,14 @@ const printer_position = Vector2(-2, -96)
 
 @export var tier: ThreeDPrinterTier
 
-@onready var player_control = $PlayerControl
-@onready var print_action = $PlayerControl/VBoxContainer/Player/PrintAction
-@onready var move_action = $PlayerControl/VBoxContainer/Player/MoveAction
-@onready var place_action = $PlayerControl/VBoxContainer/Player/PlaceAction
-@onready var swap_action = $PlayerControl/VBoxContainer/Player/SwapAction
-@onready var collect_action = $PlayerControl/VBoxContainer/Player/CollectAction
-@onready var printing_countdown = $PlayerControl/VBoxContainer/Static/Countdown
-@onready var finished_alert = $PlayerControl/VBoxContainer/Static/FinishedAlert
+@onready var player_control = $CanvasGroup/PlayerControl
+@onready var print_action = $CanvasGroup/PlayerControl/VBoxContainer/Player/PrintAction
+@onready var move_action = $CanvasGroup/PlayerControl/VBoxContainer/Player/MoveAction
+@onready var place_action = $CanvasGroup/PlayerControl/VBoxContainer/Player/PlaceAction
+@onready var swap_action = $CanvasGroup/PlayerControl/VBoxContainer/Player/SwapAction
+@onready var collect_action = $CanvasGroup/PlayerControl/VBoxContainer/Player/CollectAction
+@onready var printing_countdown = $CanvasGroup/PlayerControl/VBoxContainer/Static/Countdown
+@onready var finished_alert = $CanvasGroup/PlayerControl/VBoxContainer/Static/FinishedAlert
 
 var printer: ThreeDPrinter
 

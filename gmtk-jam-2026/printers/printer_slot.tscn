@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://sskh05xd2oop" path="res://player_control.tscn" id="1_dqxn2"]
 [ext_resource type="Script" uid="uid://bcke6kgbk54yk" path="res://printers/printer_slot.gd" id="1_q1hwv"]
+[ext_resource type="Material" uid="uid://cq28xl75dch7p" path="res://ui/drop_shadow_material.tres" id="2_jfqj1"]
 [ext_resource type="PackedScene" uid="uid://nd1a70wgmrks" path="res://ui/printer_item_action_ui.tscn" id="3_t0hge"]
 [ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_q1hwv"]
 [ext_resource type="PackedScene" uid="uid://b7mm738w7p8p2" path="res://ui/printer_basic_action_ui.tscn" id="5_jfqj1"]
@@ -12,52 +13,57 @@ size = Vector2(32, 44)
 [node name="PrinterSlot" type="Node2D" unique_id=173568912]
 script = ExtResource("1_q1hwv")
 
-[node name="PlayerControl" parent="." unique_id=1868566654 instance=ExtResource("1_dqxn2")]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=446085938]
+material = ExtResource("2_jfqj1")
+
+[node name="PlayerControl" parent="CanvasGroup" unique_id=1868566654 instance=ExtResource("1_dqxn2")]
 allow_while_carrying = true
 
-[node name="PrintAction" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=934784764 instance=ExtResource("3_t0hge")]
+[node name="VBoxContainer" parent="CanvasGroup/PlayerControl" index="0" unique_id=90601031]
+offset_transform_position = Vector2(2, -165)
+
+[node name="PrintAction" parent="CanvasGroup/PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=934784764 instance=ExtResource("3_t0hge")]
 visible = false
 layout_mode = 2
 action = "Print [Space]"
 second_action = "Move [W]"
 
-[node name="MoveAction" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="1" unique_id=577846634 instance=ExtResource("5_jfqj1")]
-visible = false
+[node name="MoveAction" parent="CanvasGroup/PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="1" unique_id=577846634 instance=ExtResource("5_jfqj1")]
 layout_mode = 2
 action = "Move [W]"
 
-[node name="PlaceAction" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="2" unique_id=45019342 instance=ExtResource("5_jfqj1")]
+[node name="PlaceAction" parent="CanvasGroup/PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="2" unique_id=45019342 instance=ExtResource("5_jfqj1")]
 visible = false
 layout_mode = 2
 action = "Place [W]"
 
-[node name="SwapAction" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="3" unique_id=780581451 instance=ExtResource("5_jfqj1")]
+[node name="SwapAction" parent="CanvasGroup/PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="3" unique_id=780581451 instance=ExtResource("5_jfqj1")]
 visible = false
 layout_mode = 2
 action = "Swap [W]"
 
-[node name="CollectAction" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="4" unique_id=1148709879 instance=ExtResource("5_jfqj1")]
+[node name="CollectAction" parent="CanvasGroup/PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="4" unique_id=1148709879 instance=ExtResource("5_jfqj1")]
 visible = false
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 14)
 action = "Collect [Space]"
 
-[node name="FinishedAlert" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=592810673 instance=ExtResource("3_t0hge")]
+[node name="FinishedAlert" parent="CanvasGroup/PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=592810673 instance=ExtResource("3_t0hge")]
 visible = false
 layout_mode = 2
 hide_basic_action = true
 
-[node name="Countdown" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="1" unique_id=93846558 instance=ExtResource("4_q1hwv")]
+[node name="Countdown" parent="CanvasGroup/PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="1" unique_id=93846558 instance=ExtResource("4_q1hwv")]
 visible = false
 layout_mode = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerControl" unique_id=360217408]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/PlayerControl" unique_id=360217408]
 position = Vector2(0, -118)
 shape = SubResource("RectangleShape2D_e8xbq")
 
-[connection signal="accept" from="PlayerControl" to="." method="_on_player_control_accept"]
-[connection signal="player_entered" from="PlayerControl" to="." method="_on_player_control_player_entered"]
-[connection signal="select_up" from="PlayerControl" to="." method="_on_player_control_select_up"]
+[connection signal="accept" from="CanvasGroup/PlayerControl" to="." method="_on_player_control_accept"]
+[connection signal="player_entered" from="CanvasGroup/PlayerControl" to="." method="_on_player_control_player_entered"]
+[connection signal="select_up" from="CanvasGroup/PlayerControl" to="." method="_on_player_control_select_up"]
 
-[editable path="PlayerControl"]
+[editable path="CanvasGroup/PlayerControl"]

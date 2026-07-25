@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Control
 class_name PrintJobUI
 
 const item_required = preload("res://assets/item_required.tres")
@@ -10,13 +10,19 @@ const item_printing_3 = preload("res://assets/item_printing_3.tres")
 
 @export var job: PrintJob
 
-@onready var countdown = $VBoxContainer/Countdown
-@onready var items_list = $VBoxContainer/ItemListUI
-@onready var reward_label = $VBoxContainer/RewardLabel
+@onready var panel = $CanvasGroup/PanelContainer
+@onready var countdown = $CanvasGroup/PanelContainer/VBoxContainer/Countdown
+@onready var items_list = $CanvasGroup/PanelContainer/VBoxContainer/ItemListUI
+@onready var reward_label = $CanvasGroup/PanelContainer/VBoxContainer/RewardLabel
 
 var completed_items: Array[PrintItem] = []
 
 func _ready():
+	var width = 144 if job.items.size() > 2 else 74
+	
+	custom_minimum_size.x = width
+	panel.custom_minimum_size.x = width
+	
 	countdown.start(job.duration)
 	
 	for item in job.items:
@@ -28,7 +34,7 @@ func _ready():
 	
 	reward_label.text = "+ $%d" % job.reward
 	
-	self_modulate = job.color
+	panel.self_modulate = job.color
 	items_list.modulate = job.color
 	reward_label.modulate = job.color
 

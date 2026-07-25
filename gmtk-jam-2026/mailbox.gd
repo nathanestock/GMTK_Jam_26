@@ -1,11 +1,11 @@
 extends Node2D
 class_name Mailbox
 
-const item_list_ui = preload("res://ui/item_list_ui.tscn")
+const package = preload("res://assets/package.tres")
 
-@onready var ship_action = $PlayerControl/VBoxContainer/Player/ShipAction
-@onready var ship_alert = $PlayerControl/VBoxContainer/Static/ReadyToShipAlert
-@onready var ship_jobs_list = $PlayerControl/VBoxContainer/Static/ReadyToShipAlert/ReadyToShipJobs
+@onready var ship_action = $CanvasGroup/PlayerControl/VBoxContainer/Player/ShipAction
+@onready var ship_alert = $CanvasGroup/PlayerControl/VBoxContainer/Static/ReadyToShipAlert
+@onready var packages_ui = $CanvasGroup/PlayerControl/VBoxContainer/Static/ReadyToShipAlert/Packages
 
 
 func _ready():
@@ -16,9 +16,11 @@ func _ready():
 
 
 func _on_ready_to_ship(job: PrintJob):
-	var item_list = item_list_ui.instantiate()
-	item_list.set_items(job.items)
-	ship_jobs_list.add_child(item_list)
+	var package_ui = TextureRect.new()
+	package_ui.texture = package
+	package_ui.modulate = job.color
+	
+	packages_ui.add_child(package_ui)
 	
 	ship_alert.show()
 	ship_action.show()
@@ -28,8 +30,8 @@ func _on_player_control_accept():
 	if ship_alert.visible and ship_action.visible:
 		JobManager.on_player_shipping_jobs()
 		
-		for item in ship_jobs_list.get_children():
-			item.queue_free()
+		for child in packages_ui.get_children():
+			child.queue_free()
 		
 		ship_action.hide()
 		ship_alert.hide()

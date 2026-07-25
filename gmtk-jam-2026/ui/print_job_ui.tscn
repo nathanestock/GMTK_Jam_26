@@ -1,40 +1,49 @@
 [gd_scene format=3 uid="uid://cays145ospm3i"]
 
 [ext_resource type="Script" uid="uid://cgqkkast2vm5g" path="res://ui/print_job_ui.gd" id="1_rpeei"]
+[ext_resource type="Material" uid="uid://cq28xl75dch7p" path="res://ui/drop_shadow_material.tres" id="2_02qtw"]
 [ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="2_j6y5t"]
 [ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_j6y5t"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8xbq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syao1"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
-expand_margin_left = 6.0
+expand_margin_left = 8.0
 expand_margin_top = 8.0
-expand_margin_right = 6.0
-expand_margin_bottom = 6.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
 
-[node name="PrintJobUI" type="PanelContainer" unique_id=940176541]
+[node name="PrintJobUI" type="Control" unique_id=1328608377]
 z_index = 2
 z_as_relative = false
+layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -538.0
-offset_right = -460.0
-offset_bottom = 68.0
+offset_left = -512.0
+offset_right = -512.0
 grow_horizontal = 2
 offset_transform_position = Vector2(0, 10)
-theme_override_styles/panel = SubResource("StyleBoxFlat_e8xbq")
 script = ExtResource("1_rpeei")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1061001647]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=546032380]
+material = ExtResource("2_02qtw")
+fit_margin = 90.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasGroup" unique_id=1151437475]
+offset_right = 29.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_syao1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/PanelContainer" unique_id=1061001647]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="RewardLabel" type="Label" parent="VBoxContainer" unique_id=1116021776]
+[node name="RewardLabel" type="Label" parent="CanvasGroup/PanelContainer/VBoxContainer" unique_id=1116021776]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_j6y5t")
@@ -42,10 +51,11 @@ text = "$50"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemListUI" type="HBoxContainer" parent="VBoxContainer" unique_id=1971852670]
+[node name="ItemListUI" type="HBoxContainer" parent="CanvasGroup/PanelContainer/VBoxContainer" unique_id=1971852670]
+layout_mode = 2
+alignment = 1
+
+[node name="Countdown" parent="CanvasGroup/PanelContainer/VBoxContainer" unique_id=93846558 instance=ExtResource("2_j6y5t")]
 layout_mode = 2
 
-[node name="Countdown" parent="VBoxContainer" unique_id=93846558 instance=ExtResource("2_j6y5t")]
-layout_mode = 2
-
-[connection signal="timeout" from="VBoxContainer/Countdown" to="." method="_on_countdown_timeout"]
+[connection signal="timeout" from="CanvasGroup/PanelContainer/VBoxContainer/Countdown" to="." method="_on_countdown_timeout"]
