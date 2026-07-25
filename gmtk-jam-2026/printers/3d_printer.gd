@@ -3,14 +3,12 @@ class_name ThreeDPrinter
 
 signal finished_printing(items: Array[PrintItem])
 
-const print_finished = preload("res://sounds/Printer Finished.wav")
-const printer_audio = preload("res://sounds/Printer Audio.wav")
-const collected_items = preload("res://sounds/Move Printer.mp3")
-
 @export var tier: ThreeDPrinterTier
 
 @onready var sprite = $Sprite2D
-@onready var sounds = $SoundEffects
+@onready var printer_sound = $PrinterSound
+@onready var finished_sound = $FinishedSound
+@onready var collected_sound = $CollectedSound
 
 
 enum State { IDLE, PRINTING, DONE }
@@ -39,8 +37,7 @@ func start_printing(_countdown: Countdown, items: Array[PrintItem]):
 	countdown.start(print_time)
 	countdown.timeout.connect(_on_finished_printing)
 	
-	sounds.stream = printer_audio
-	sounds.play()
+	printer_sound.play(0)
 
 
 func _on_finished_printing():
@@ -48,13 +45,12 @@ func _on_finished_printing():
 	finished_printing.emit(printing_items)
 	state = State.DONE
 	
-	sounds.stream = print_finished
-	sounds.play()
+	printer_sound.stop()
+	finished_sound.play()
 
 
 func on_picked_up_items():
 	printing_items = []
 	state = State.IDLE
 	
-	sounds.stream = collected_items
-	sounds.play()
+	collected_sound.play()
