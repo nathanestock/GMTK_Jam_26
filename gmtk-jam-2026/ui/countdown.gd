@@ -16,6 +16,10 @@ func start(time: int):
 	timer.start(time)
 
 
+func stop():
+	timer.stop()
+
+
 func set_label(text: String):
 	label.text = text
 
