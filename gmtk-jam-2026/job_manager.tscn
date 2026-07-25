@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://chtcuefoyduuk" path="res://job_manager.gd" id="1_23jyf"]
 [ext_resource type="PackedScene" uid="uid://cqamg7tg7mk2w" path="res://ui/money_counter_ui.tscn" id="2_d4d37"]
 [ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_hifh1"]
+[ext_resource type="Script" uid="uid://vbet158nk487" path="res://global_sounds.gd" id="5_5ykyo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4d37"]
 bg_color = Color(0, 0, 0, 0.78431374)
@@ -140,3 +141,6 @@ theme = ExtResource("3_hifh1")
 theme_override_font_sizes/font_size = 20
 text = "Quit [Esc]"
 horizontal_alignment = 1
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="." unique_id=105039090]
+script = ExtResource("5_5ykyo")

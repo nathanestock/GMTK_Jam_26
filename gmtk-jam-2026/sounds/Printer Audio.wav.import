@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ccbb71rpnrvq0"
+path="res://.godot/imported/Printer Audio.wav-8854df6e63897ed4dac5fc5dd683e71a.sample"
+
+[deps]
+
+source_file="res://sounds/Printer Audio.wav"
+dest_files=["res://.godot/imported/Printer Audio.wav-8854df6e63897ed4dac5fc5dd683e71a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

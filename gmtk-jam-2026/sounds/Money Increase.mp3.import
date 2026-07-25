@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://oyco1p67nsao"
+path="res://.godot/imported/Money Increase.mp3-712242dac5c1465d86ed6b1e9c44556b.mp3str"
+
+[deps]
+
+source_file="res://sounds/Money Increase.mp3"
+dest_files=["res://.godot/imported/Money Increase.mp3-712242dac5c1465d86ed6b1e9c44556b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

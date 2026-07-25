@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2nl6j6j4cyor"
+path="res://.godot/imported/Printer Started.mp3-b72268efc8d31633a191289203d81738.mp3str"
+
+[deps]
+
+source_file="res://sounds/Printer Started.mp3"
+dest_files=["res://.godot/imported/Printer Started.mp3-b72268efc8d31633a191289203d81738.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

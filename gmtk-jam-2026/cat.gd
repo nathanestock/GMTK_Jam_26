@@ -4,6 +4,8 @@ const SPEED = 300.0
 const ACCELERATION = 1000.0
 const FRICTION = 5000.0
 
+const meow = preload("res://sounds/Meow.mp3")
+
 @export var travel_range: Vector2 # x_min, x_max
 
 @onready var animations = $CanvasGroup2/AnimatedSprite2D
@@ -14,6 +16,7 @@ const FRICTION = 5000.0
 @onready var player_ui = $CanvasGroup/CatControl/Labels/Player
 @onready var travel_timer = $TravelTimer
 @onready var sleep_timer = $SleepTimer
+@onready var sounds = $SoundEffects
 
 var rng = RandomNumberGenerator.new()
 
@@ -108,6 +111,9 @@ func _pet():
 	static_ui.hide()
 	player_ui.hide()
 	
+	sounds.stream = meow
+	sounds.play()
+	
 	_reset_pet_timer()
 
 
@@ -139,3 +145,5 @@ func _reset_sleep_timer():
 
 func _on_sleep_timer_timeout():
 	_awake()
+	sounds.stream = meow
+	sounds.play()

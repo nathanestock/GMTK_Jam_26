@@ -14,6 +14,7 @@ const printer_position = Vector2(-2, -96)
 @onready var collect_action = $CanvasGroup/PlayerControl/VBoxContainer/Player/CollectAction
 @onready var printing_countdown = $CanvasGroup/PlayerControl/VBoxContainer/Static/Countdown
 @onready var finished_alert = $CanvasGroup/PlayerControl/VBoxContainer/Static/FinishedAlert
+@onready var sounds = $SoundEffects
 
 var printer: ThreeDPrinter
 
@@ -137,6 +138,8 @@ func _on_move_printer():
 	print_action.hide()
 	move_action.hide()
 	place_action.show()
+	
+	sounds.play()
 
 
 func _on_place_printer():
@@ -149,6 +152,8 @@ func _on_place_printer():
 	place_action.hide()
 	
 	_on_unassigned_items(JobManager.get_unassigned_items())
+	
+	sounds.play()
 
 
 func _on_swap_printer():
@@ -163,6 +168,8 @@ func _on_swap_printer():
 	
 	add_child(printer)
 	swap_action.queue_redraw()
+	
+	sounds.play()
 
 
 func _set_printer(_printer: ThreeDPrinter):

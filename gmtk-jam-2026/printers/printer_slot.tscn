@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://nd1a70wgmrks" path="res://ui/printer_item_action_ui.tscn" id="3_t0hge"]
 [ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_q1hwv"]
 [ext_resource type="PackedScene" uid="uid://b7mm738w7p8p2" path="res://ui/printer_basic_action_ui.tscn" id="5_jfqj1"]
+[ext_resource type="AudioStream" uid="uid://c18klgus0ud6j" path="res://sounds/Move Printer.mp3" id="7_t0hge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
 size = Vector2(32, 44)
@@ -61,6 +62,9 @@ layout_mode = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/PlayerControl" unique_id=360217408]
 position = Vector2(0, -118)
 shape = SubResource("RectangleShape2D_e8xbq")
+
+[node name="SoundEffects" type="AudioStreamPlayer2D" parent="." unique_id=1687498166]
+stream = ExtResource("7_t0hge")
 
 [connection signal="accept" from="CanvasGroup/PlayerControl" to="." method="_on_player_control_accept"]
 [connection signal="player_entered" from="CanvasGroup/PlayerControl" to="." method="_on_player_control_player_entered"]

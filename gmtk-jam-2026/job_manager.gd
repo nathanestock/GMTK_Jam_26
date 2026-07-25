@@ -25,6 +25,7 @@ const item_top = preload("res://assets/item_top.tres")
 @onready var win_ui = $YouWin
 @onready var list_hbox = $JobListUI
 @onready var money_ui = $MoneyCounterUI
+@onready var sounds = $SoundEffects
 
 
 var jobs: Array[PrintJob] = []
@@ -125,6 +126,7 @@ func on_player_accepted_job(job: PrintJob) -> bool:
 		return false
 	
 	jobs.append(job)
+	sounds.play_accept_job()
 	
 	_render_jobs_ui()
 	
@@ -135,6 +137,8 @@ func on_player_accepted_job(job: PrintJob) -> bool:
 
 func on_player_printing_items(items: Array[PrintItem]):
 	print("Printing: {items}".format({ "items": items }))
+	sounds.play_printer_started()
+	
 	var job = items[0].job
 	
 	for item in items:
@@ -158,8 +162,10 @@ func on_player_picking_up_items(items: Array[PrintItem]):
 		
 	var jobIndex = jobs.find_custom(func (j): return j.items.any(func (i): return items.has(i)))
 	var job = jobs[jobIndex]
+	
 	if job.is_ready_to_ship():
 		ready_to_ship.emit(job)
+		sounds.play_ready_to_ship()
 	
 	_render_jobs_ui()
 
@@ -178,6 +184,7 @@ func on_player_shipping_jobs():
 		jobs.remove_at(index)
 	
 	money_ui.add_money(total_reward)
+	sounds.play_money_increase()
 	
 	if money_to_win and money_ui.money >= money_to_win:
 		win_game.emit()

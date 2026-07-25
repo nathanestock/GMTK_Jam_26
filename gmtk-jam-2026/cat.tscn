@@ -201,6 +201,8 @@ one_shot = true
 [node name="SleepTimer" type="Timer" parent="." unique_id=1355838476]
 one_shot = true
 
+[node name="SoundEffects" type="AudioStreamPlayer2D" parent="." unique_id=2062818820]
+
 [connection signal="body_entered" from="CanvasGroup/CatControl" to="CanvasGroup/CatControl" method="_on_body_entered"]
 [connection signal="body_exited" from="CanvasGroup/CatControl" to="CanvasGroup/CatControl" method="_on_body_exited"]
 [connection signal="timeout" from="NeedsPetTimer" to="." method="_on_timer_timeout"]
