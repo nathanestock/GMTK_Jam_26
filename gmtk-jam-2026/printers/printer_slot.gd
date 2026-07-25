@@ -70,8 +70,10 @@ func _on_finished_printing(items: Array[PrintItem]):
 	print_finished_list.clear()
 		
 	for item in items:
+		item.set_is_completed()
 		print_finished_list.add_item(item)
 	
+	JobManager.on_printer_finished()
 	print_finished_ui.show()
 	
 	pickup_action.show()

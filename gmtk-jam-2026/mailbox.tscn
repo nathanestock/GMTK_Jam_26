@@ -12,7 +12,7 @@ size = Vector2(120, 32)
 script = ExtResource("1_oanx3")
 
 [node name="Table" type="Sprite2D" parent="." unique_id=1298615718]
-position = Vector2(0, -64)
+position = Vector2(4, -64)
 scale = Vector2(4, 4)
 texture = ExtResource("2_15j57")
 
@@ -36,7 +36,7 @@ theme = ExtResource("4_fqaqs")
 layout_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerControl" unique_id=1079423077]
-position = Vector2(-4, -100)
+position = Vector2(0, -100)
 shape = SubResource("RectangleShape2D_e8xbq")
 
 [connection signal="accept" from="PlayerControl" to="." method="_on_player_control_accept"]

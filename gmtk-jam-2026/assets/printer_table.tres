@@ -1,6 +1,6 @@
 [gd_resource type="AtlasTexture" format=3 uid="uid://dyesri60rsxfr"]
 
-[ext_resource type="Texture2D" uid="uid://hu5h2n4u2eyt" path="res://assets/Static Objects.png" id="1_asw1s"]
+[ext_resource type="Texture2D" uid="uid://djlda8rf4w6xm" path="res://assets/Static_Objects.png" id="1_asw1s"]
 
 [resource]
 atlas = ExtResource("1_asw1s")

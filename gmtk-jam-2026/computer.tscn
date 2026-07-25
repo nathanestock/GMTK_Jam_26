@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c86tksb6dwm0t" path="res://assets/computer.tres" id="2_18hgq"]
 [ext_resource type="PackedScene" uid="uid://sskh05xd2oop" path="res://player_control.tscn" id="2_jr5mb"]
 [ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_4xfga"]
-[ext_resource type="PackedScene" uid="uid://real3m6m8fbo" path="res://ui/countdown.tscn" id="4_wy26k"]
+[ext_resource type="PackedScene" uid="uid://oa2bdp11840f" path="res://ui/new_jobs_ui.tscn" id="5_4xfga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xbq"]
 size = Vector2(80, 56)
@@ -19,72 +19,33 @@ texture = ExtResource("2_18hgq")
 
 [node name="PlayerControl" parent="." unique_id=1868566654 instance=ExtResource("2_jr5mb")]
 
-[node name="NoColorsAlert" type="Label" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=1165733786]
+[node name="NewJobsUI" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="0" unique_id=1704886128 instance=ExtResource("5_4xfga")]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(10, 0)
+
+[node name="NoColorsAlert" type="Label" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=1165733786]
 visible = false
 layout_mode = 2
 theme = ExtResource("3_4xfga")
-text = "BUY NEW COLOR"
-uppercase = true
-
-[node name="PendingJobAlert" type="Label" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="1" unique_id=97022145]
-visible = false
-layout_mode = 2
-theme = ExtResource("3_4xfga")
-text = "assign to printers"
-uppercase = true
-
-[node name="NoJobsAlert" type="Label" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="2" unique_id=164940921]
-visible = false
-layout_mode = 2
-theme = ExtResource("3_4xfga")
-text = "waiting for jobs"
-uppercase = true
-
-[node name="ChooseJobPanel" type="PanelContainer" parent="PlayerControl/VBoxContainer/Player" parent_id_path=PackedInt32Array(1868566654, 663919162) index="3" unique_id=1801219268]
-visible = false
-layout_mode = 2
-theme = ExtResource("3_4xfga")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerControl/VBoxContainer/Player/ChooseJobPanel" unique_id=1677032113]
-layout_mode = 2
-
-[node name="ChooseJob" type="Label" parent="PlayerControl/VBoxContainer/Player/ChooseJobPanel/VBoxContainer" unique_id=580312273]
-layout_mode = 2
-theme = ExtResource("3_4xfga")
-text = "choose job [w/s]"
+text = "Buy New Color"
 horizontal_alignment = 1
-uppercase = true
+vertical_alignment = 1
 
-[node name="ItemList" type="ItemList" parent="PlayerControl/VBoxContainer/Player/ChooseJobPanel/VBoxContainer" unique_id=1844733365]
-layout_mode = 2
-mouse_filter = 2
-theme = ExtResource("3_4xfga")
-allow_search = false
-auto_height = true
-item_count = 1
-
-[node name="Accept" type="Label" parent="PlayerControl/VBoxContainer/Player/ChooseJobPanel/VBoxContainer" unique_id=1531022535]
-layout_mode = 2
-theme = ExtResource("3_4xfga")
-text = "accept [space]"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="PanelContainer" type="PanelContainer" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="0" unique_id=575338780]
-layout_mode = 2
-theme = ExtResource("3_4xfga")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerControl/VBoxContainer/Static/PanelContainer" unique_id=515783484]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="NewJobsIn" type="Label" parent="PlayerControl/VBoxContainer/Static/PanelContainer/VBoxContainer" unique_id=1302833226]
+[node name="AssignPrintersAlert" type="Label" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="1" unique_id=97022145]
 visible = false
 layout_mode = 2
-text = "NEW JOBS IN"
+theme = ExtResource("3_4xfga")
+text = "Assign Printers"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Countdown" parent="PlayerControl/VBoxContainer/Static/PanelContainer/VBoxContainer" unique_id=93846558 instance=ExtResource("4_wy26k")]
+[node name="ChooseJob" type="Label" parent="PlayerControl/VBoxContainer/Static" parent_id_path=PackedInt32Array(1868566654, 147531222) index="2" unique_id=405651933]
 layout_mode = 2
+theme = ExtResource("3_4xfga")
+text = "Choose Job"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerControl" unique_id=1313335598]
 position = Vector2(0, -124)

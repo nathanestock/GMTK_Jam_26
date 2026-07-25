@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://urc4l04n0f3t"
-path="res://.godot/imported/TileSheet.png-ed427ab8d7ac08aea193c8f78a5fc944.ctex"
+uid="uid://bdq3ilnmvp4ow"
+path="res://.godot/imported/Black_Cat_Sprite_Sheet.png-e47160198210c5a6d2a5a0e1069918a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TileSheet.png"
-dest_files=["res://.godot/imported/TileSheet.png-ed427ab8d7ac08aea193c8f78a5fc944.ctex"]
+source_file="res://assets/Black_Cat_Sprite_Sheet.png"
+dest_files=["res://.godot/imported/Black_Cat_Sprite_Sheet.png-e47160198210c5a6d2a5a0e1069918a4.ctex"]
 
 [params]
 

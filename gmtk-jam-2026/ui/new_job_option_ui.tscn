@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bk18ors4faipq"]
+
+[ext_resource type="Script" uid="uid://dyjdqi2ulw225" path="res://ui/new_job_option_ui.gd" id="1_35ot5"]
+[ext_resource type="Texture2D" uid="uid://bxs5wisw07l7j" path="res://assets/job_option.tres" id="1_61tjq"]
+[ext_resource type="Texture2D" uid="uid://c4vp2ul18o8h5" path="res://assets/item_star.tres" id="3_35ot5"]
+[ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_o10p6"]
+
+[node name="NewJobOptionUI" type="HBoxContainer" unique_id=745284055]
+script = ExtResource("1_35ot5")
+
+[node name="Control" type="Control" parent="." unique_id=990305297]
+custom_minimum_size = Vector2(104, 40)
+layout_mode = 2
+
+[node name="JobOption" type="TextureRect" parent="Control" unique_id=2056700471]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 40.0
+texture = ExtResource("1_61tjq")
+stretch_mode = 2
+
+[node name="PrintTime" type="Label" parent="Control" unique_id=1434026659]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 20.0
+offset_right = 44.0
+offset_bottom = 33.0
+theme = ExtResource("3_o10p6")
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NumOfItems" type="Label" parent="Control" unique_id=1197951006]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 20.0
+offset_right = 70.0
+offset_bottom = 33.0
+theme = ExtResource("3_o10p6")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reward" type="Label" parent="Control" unique_id=314130363]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 20.0
+offset_right = 94.0
+offset_bottom = 33.0
+theme = ExtResource("3_o10p6")
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item" type="TextureRect" parent="." unique_id=1512851949]
+layout_mode = 2
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+texture = ExtResource("3_35ot5")
+stretch_mode = 2

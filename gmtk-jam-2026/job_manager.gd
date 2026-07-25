@@ -7,12 +7,21 @@ signal unassigned_items(items: PrintItem)
 signal ready_to_ship(job: PrintJob)
 
 const print_job_ui = preload("res://ui/print_job_ui.tscn")
+const item_circle = preload("res://assets/item_circle.tres")
+const item_cross = preload("res://assets/item_cross.tres")
+const item_hourglass = preload("res://assets/item_hourglass.tres")
+const item_maze = preload("res://assets/item_maze.tres")
+const item_plug = preload("res://assets/item_plug.tres")
+const item_pyramid = preload("res://assets/item_pyramid.tres")
+const item_star = preload("res://assets/item_star.tres")
+const item_top = preload("res://assets/item_top.tres")
 
 @onready var list_hbox = $JobListUI
 @onready var money_ui = $MoneyCounterUI
 
 var jobs: Array[PrintJob] = []
 var available_colors: Array[Color] = [Color.BLUE, Color.RED, Color.GREEN]
+var available_item_types = [item_circle, item_cross, item_hourglass, item_maze, item_plug, item_pyramid, item_star, item_top]
 
 func _ready():
 	money_ui.set_money(20)
@@ -54,7 +63,7 @@ func on_player_printing_items(items: Array[PrintItem]):
 
 func on_player_picking_up_items(items: Array[PrintItem]):
 	for item in items:
-		item.set_is_completed()
+		item.set_is_picked_up()
 		
 	var jobIndex = jobs.find_custom(func (j): return j.items.any(func (i): return items.has(i)))
 	var job = jobs[jobIndex]
@@ -86,7 +95,15 @@ func on_player_shipping_jobs():
 
 func get_next_color() -> Color:
 	var available = available_colors.filter(func (c): return not jobs.map(func (j): return j.color).has(c))
-	return available[0]
+	
+	if available.size() > 0:
+		return available[0]
+	
+	return Color.TRANSPARENT
+
+
+func get_available_item_types():
+	return available_item_types.filter(func (t): return not jobs.map(func (j): return j.item_type).has(t))
 
 
 func get_unassigned_items() -> Array[PrintItem]:
@@ -96,6 +113,10 @@ func get_unassigned_items() -> Array[PrintItem]:
 			return unassigned
 	
 	return []
+
+
+func on_printer_finished():
+	_render_jobs_ui()
 
 
 func _is_out_of_colors() -> bool:
