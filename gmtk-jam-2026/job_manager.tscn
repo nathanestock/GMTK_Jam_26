@@ -2,11 +2,16 @@
 
 [ext_resource type="Script" uid="uid://chtcuefoyduuk" path="res://job_manager.gd" id="1_23jyf"]
 [ext_resource type="PackedScene" uid="uid://cqamg7tg7mk2w" path="res://ui/money_counter_ui.tscn" id="2_d4d37"]
+[ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="3_hifh1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4d37"]
+bg_color = Color(0, 0, 0, 0.78431374)
 
 [node name="JobManager" type="CanvasLayer" unique_id=1337043993]
 script = ExtResource("1_23jyf")
 
 [node name="JobListUI" type="HBoxContainer" parent="." unique_id=1165958978]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -17,7 +22,129 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="MoneyCounterUI" parent="." unique_id=1718694508 instance=ExtResource("2_d4d37")]
+visible = false
 offset_left = -14.0
 offset_right = -14.0
 offset_transform_enabled = true
 offset_transform_position = Vector2(-30, 40)
+
+[node name="PlayGame" type="PanelContainer" parent="." unique_id=1089190808]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d4d37")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayGame" unique_id=1509123745]
+layout_mode = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="HBoxContainer" type="HFlowContainer" parent="PlayGame/VBoxContainer" unique_id=1282498914]
+modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_constants/h_separation = 32
+alignment = 1
+
+[node name="Credits" type="Label" parent="PlayGame/VBoxContainer/HBoxContainer" unique_id=1716746271]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -50)
+theme = ExtResource("3_hifh1")
+theme_override_font_sizes/font_size = 20
+text = "stocknstuff"
+horizontal_alignment = 1
+
+[node name="Credits2" type="Label" parent="PlayGame/VBoxContainer/HBoxContainer" unique_id=2146752466]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -50)
+theme = ExtResource("3_hifh1")
+theme_override_font_sizes/font_size = 20
+text = "sentric490"
+horizontal_alignment = 1
+
+[node name="Credits3" type="Label" parent="PlayGame/VBoxContainer/HBoxContainer" unique_id=93674752]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -50)
+theme = ExtResource("3_hifh1")
+theme_override_font_sizes/font_size = 20
+text = "sirtibbles"
+horizontal_alignment = 1
+
+[node name="Credits4" type="Label" parent="PlayGame/VBoxContainer/HBoxContainer" unique_id=1764436563]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -50)
+theme = ExtResource("3_hifh1")
+theme_override_font_sizes/font_size = 20
+text = "spiceygurt"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="PlayGame/VBoxContainer" unique_id=399651158]
+layout_mode = 2
+theme = ExtResource("3_hifh1")
+theme_override_font_sizes/font_size = 48
+text = "THE GAME"
+horizontal_alignment = 1
+
+[node name="Play" type="Label" parent="PlayGame/VBoxContainer" unique_id=1414918330]
+layout_mode = 2
+theme = ExtResource("3_hifh1")
+theme_override_font_sizes/font_size = 28
+text = "Walk Around [A/D]"
+horizontal_alignment = 1
+
+[node name="YouWin" type="PanelContainer" parent="." unique_id=1261983187]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d4d37")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="YouWin" unique_id=620266695]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="YouWin" type="Label" parent="YouWin/VBoxContainer" unique_id=1966016109]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -50)
+theme = ExtResource("3_hifh1")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "You Win!"
+horizontal_alignment = 1
+
+[node name="KeepPlaying" type="Label" parent="YouWin/VBoxContainer" unique_id=1209630176]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -50)
+theme = ExtResource("3_hifh1")
+theme_override_font_sizes/font_size = 20
+text = "Keep Playing [Space]"
+horizontal_alignment = 1
+
+[node name="Restart" type="Label" parent="YouWin/VBoxContainer" unique_id=861951362]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -50)
+theme = ExtResource("3_hifh1")
+theme_override_font_sizes/font_size = 20
+text = "Restart [W]"
+horizontal_alignment = 1
+
+[node name="Quit" type="Label" parent="YouWin/VBoxContainer" unique_id=224826021]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -50)
+theme = ExtResource("3_hifh1")
+theme_override_font_sizes/font_size = 20
+text = "Quit [Esc]"
+horizontal_alignment = 1

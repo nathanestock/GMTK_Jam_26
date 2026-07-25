@@ -1,7 +1,7 @@
 extends Control
 class_name MoneyCounterUI
 
-@export var total: int = 1000
+
 
 var money: int = 0
 
@@ -12,7 +12,7 @@ var money: int = 0
 
 func _ready():
 	update_money_label.hide()
-	total_label.text = "/ %s" % FormatHelpers.money_str(total, false)
+	
 
 
 func set_money(value: int):
@@ -20,26 +20,41 @@ func set_money(value: int):
 	_update_money_label()
 
 
+func set_total(value: int):
+	total_label.show()
+	
+	total_label.text = "/ %s" % FormatHelpers.money_str(value, false)
+
+
+func set_zen_mode():
+	total_label.hide()
+
+
 func add_money(value: int):
 	money += value
 	_update_money_label()
-	_update_money_ui(value)
+	_update_money_ui("+ %s" % FormatHelpers.money_str(value), Color.GREEN)
+
+
+func remove_money(value: int) -> bool:
+	if (money - value < 0):
+		_update_money_ui("Nope!", Color.RED)
+		return false
 	
+	money -= value
+	_update_money_label()
+	_update_money_ui("- %s" % FormatHelpers.money_str(value), Color.RED)
+	
+	return true
 
 
 func _update_money_label():
 	money_label.text = FormatHelpers.money_str(money)
 
 
-func _update_money_ui(value: int):
-	update_money_label.text = "$%d" % value
-	
-	if value < 0:
-		update_money_label.text = "- %s" % FormatHelpers.money_str(value)
-		update_money_label.modulate = Color.RED
-	else:
-		update_money_label.text = "+ %s" % FormatHelpers.money_str(value)
-		update_money_label.modulate = Color.GREEN
+func _update_money_ui(str: String, color: Color):
+	update_money_label.text = str
+	update_money_label.modulate = color
 	
 	update_money_label.modulate.a = 1.0
 	update_money_label.show()

@@ -21,6 +21,8 @@ shadow_color = Color(0, 0, 0, 0.78431374)
 shadow_size = 10
 
 [resource]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_d8awb")
 ItemList/colors/font_selected_color = Color(0, 0.8039216, 0.16470589, 1)
 ItemList/font_sizes/font_size = 12
 Label/font_sizes/font_size = 14

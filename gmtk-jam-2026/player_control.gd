@@ -15,6 +15,8 @@ var player: Player = null
 
 
 func _ready():
+	add_to_group("PlayerControl")
+	
 	if static_ui:
 		static_ui.show()
 	
@@ -23,17 +25,18 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventKey and player_ui.visible:
+	if event is InputEventKey and visible and player_ui.visible:
 		if event.is_action_pressed("ui_accept"):
 			accept.emit()
 		elif event.is_action_pressed("ui_up"):
 			select_up.emit()
 		elif event.is_action_pressed("ui_down"):
 			select_down.emit()
+		
+		get_viewport().set_input_as_handled()
 
 
 func _on_body_entered(body):
-	print(body)
 	if body is Player and player_ui:
 		player = body
 		

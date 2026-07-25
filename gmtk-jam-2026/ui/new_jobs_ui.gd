@@ -15,11 +15,14 @@ func set_jobs(jobs: Array[PrintJob]):
 	color = JobManager.get_next_color()
 	if color == Color.TRANSPARENT:
 		return
+		
+	var money = JobManager.get_money()
 	
 	for job in jobs:
 		job.set_color(color)
 		var option = option_ui.instantiate()
 		option.job = job
+		option.can_afford = job.cost <= money
 		
 		list.add_child(option)
 	
@@ -39,14 +42,15 @@ func select_down():
 
 
 func select(index: int):
-	selected = index
-	for i in range(list.get_child_count()):
-		var option = list.get_child(i) as NewJobOptionUI
-		if i == index:
-			option.modulate = color
-		else:
-			option.modulate = Color.WHITE
-		i += 1
+	var option = list.get_child(index)
+	if option.can_afford:
+		selected = index
+		for i in range(list.get_child_count()):
+			var _option = list.get_child(i) as NewJobOptionUI
+			if _option.can_afford:
+				_option.modulate = Color.WHITE
+		
+		option.modulate = color
 
 
 func get_selected() -> PrintJob:

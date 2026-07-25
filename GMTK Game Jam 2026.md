@@ -7,6 +7,9 @@ shipping ui art
 
 
 TODO:
+[X] - buy job system
+
 [ ] - win game system
 [ ] - sanity system, lose game
 [ ] - shop
+[ ] - add sound effects

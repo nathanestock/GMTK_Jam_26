@@ -2,6 +2,7 @@ extends Resource
 class_name PrintJob
 
 @export var duration: int
+@export var cost: int
 @export var reward: int
 @export var items: Array[PrintItem]
 @export var color: Color

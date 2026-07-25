@@ -5,6 +5,10 @@ signal ready_for_job
 signal out_of_colors
 signal unassigned_items(items: PrintItem)
 signal ready_to_ship(job: PrintJob)
+signal win_game
+
+@export var money_to_win = 100
+@export var starting_money = 20
 
 const print_job_ui = preload("res://ui/print_job_ui.tscn")
 const item_circle = preload("res://assets/item_circle.tres")
@@ -16,33 +20,113 @@ const item_pyramid = preload("res://assets/item_pyramid.tres")
 const item_star = preload("res://assets/item_star.tres")
 const item_top = preload("res://assets/item_top.tres")
 
+
+@onready var play_ui = $PlayGame
+@onready var win_ui = $YouWin
 @onready var list_hbox = $JobListUI
 @onready var money_ui = $MoneyCounterUI
+
 
 var jobs: Array[PrintJob] = []
 var available_colors: Array[Color] = [Color("a9def9"), Color("fcf6bd"), Color("ff99c8"), Color("d0f4de"), Color("e4c1f9")]
 var available_item_types = [item_circle, item_cross, item_hourglass, item_maze, item_plug, item_pyramid, item_star, item_top]
 
 func _ready():
-	money_ui.set_money(20)
-	
-	for child in list_hbox.get_children():
-		child.free()
+	play_ui.show()
+	win_ui.hide()
+	list_hbox.hide()
+	money_ui.hide()
 	
 	ready_for_job.connect(func (): print("Ready For Job"))
 	unassigned_items.connect(func (items): print("Unassigned Items: {items}".format({ "items": items })))
 	ready_to_ship.connect(func (job): print("Ready To Ship: {job}".format({ "job": job })))
 	out_of_colors.connect(func (): print("Out Of Colors"))
+	win_game.connect(_on_win_game)
+
+
+func on_play_game():
+	print("Play")
+	play_ui.hide()
+	win_ui.hide()
 	
+	list_hbox.show()
+	money_ui.show()
+	money_ui.set_money(starting_money)
+	money_ui.set_total(money_to_win)
 	ready_for_job.emit()
 
 
-func on_player_accepted_job(job: PrintJob):
+func _on_win_game():
+	print("You win!")
+	win_ui.show()
+	
+	list_hbox.show()
+	money_ui.show()
+
+
+func on_keep_playing():
+	print("Keep playing")
+	win_ui.hide()
+	
+	money_to_win = null
+	money_ui.set_zen_mode()
+	
+	list_hbox.show()
+	money_ui.show()
+
+
+func on_quit():
+	print("Quit")
+	play_ui.show()
+	
+	win_ui.hide()
+	list_hbox.hide()
+	money_ui.hide()
+
+
+func create_new_jobs() -> Array[PrintJob]:
+	var item_types = _get_available_item_types().duplicate()
+	
+	item_types.shuffle()
+	
+	var new_jobs: Array[PrintJob] = []
+	
+	for j in range(3):
+		var job = PrintJob.new()
+		
+		job.duration = 30
+		if j == 0 and money_ui.money <= 0:
+			job.cost = 0
+		else:
+			job.cost = 5
+		job.reward = 20
+		
+		var num_of_items = [1,1,1,2,2,3,4].pick_random()
+		
+		for i in range(num_of_items):
+			var item = PrintItem.new()
+			item.job = job
+			item.print_time = 5
+			item.material = 10
+			job.items.append(item)
+		
+		job.item_type = item_types.pop_front()
+		new_jobs.append(job)
+	
+	return new_jobs
+
+
+func on_player_accepted_job(job: PrintJob) -> bool:
+	if not money_ui.remove_money(job.cost):
+		return false
+	
 	jobs.append(job)
 	
 	_render_jobs_ui()
 	
 	unassigned_items.emit(job.items)
+	
+	return true
 
 
 func on_player_printing_items(items: Array[PrintItem]):
@@ -91,6 +175,10 @@ func on_player_shipping_jobs():
 	
 	money_ui.add_money(total_reward)
 	
+	if money_to_win and money_ui.money >= money_to_win:
+		win_game.emit()
+		return
+	
 	ready_for_job.emit()
 	
 	_render_jobs_ui()
@@ -105,7 +193,7 @@ func get_next_color() -> Color:
 	return Color.TRANSPARENT
 
 
-func get_available_item_types():
+func _get_available_item_types():
 	return available_item_types.filter(func (t): return not jobs.map(func (j): return j.item_type).has(t))
 
 
@@ -120,6 +208,10 @@ func get_unassigned_items() -> Array[PrintItem]:
 
 func on_printer_finished():
 	_render_jobs_ui()
+
+
+func get_money() -> int:
+	return money_ui.money
 
 
 func _is_out_of_colors() -> bool:

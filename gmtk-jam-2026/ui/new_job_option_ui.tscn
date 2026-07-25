@@ -9,22 +9,23 @@
 script = ExtResource("1_35ot5")
 
 [node name="Control" type="Control" parent="." unique_id=990305297]
-custom_minimum_size = Vector2(104, 40)
+custom_minimum_size = Vector2(125, 41)
 layout_mode = 2
 
 [node name="JobOption" type="TextureRect" parent="Control" unique_id=2056700471]
 layout_mode = 0
 offset_right = 104.0
-offset_bottom = 40.0
+offset_bottom = 34.0
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_61tjq")
 stretch_mode = 2
 
 [node name="PrintTime" type="Label" parent="Control" unique_id=1434026659]
 layout_mode = 0
-offset_left = 31.0
-offset_top = 20.0
-offset_right = 44.0
-offset_bottom = 33.0
+offset_left = 8.0
+offset_top = 26.0
+offset_right = 24.0
+offset_bottom = 41.0
 theme = ExtResource("3_o10p6")
 text = "99"
 horizontal_alignment = 1
@@ -32,23 +33,46 @@ vertical_alignment = 1
 
 [node name="NumOfItems" type="Label" parent="Control" unique_id=1197951006]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 20.0
-offset_right = 70.0
-offset_bottom = 33.0
+offset_left = 40.0
+offset_top = 25.0
+offset_right = 53.0
+offset_bottom = 40.0
 theme = ExtResource("3_o10p6")
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Reward" type="Label" parent="Control" unique_id=314130363]
+[node name="Cost" type="Label" parent="Control" unique_id=1742234106]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 20.0
-offset_right = 94.0
-offset_bottom = 33.0
+offset_left = 67.0
+offset_top = 25.0
+offset_right = 83.0
+offset_bottom = 40.0
 theme = ExtResource("3_o10p6")
 text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reward" type="Label" parent="Control" unique_id=314130363]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 25.0
+offset_right = 114.0
+offset_bottom = 40.0
+theme = ExtResource("3_o10p6")
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NeedMoneyAlert" type="Label" parent="Control" unique_id=810629047]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 113.0
+offset_bottom = 34.0
+theme = ExtResource("3_o10p6")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Need more money"
 horizontal_alignment = 1
 vertical_alignment = 1
 

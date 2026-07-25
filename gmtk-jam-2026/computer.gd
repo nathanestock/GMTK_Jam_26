@@ -24,32 +24,8 @@ func _ready():
 	_update_job_list()
 
 
-func _create_new_job() -> PrintJob:
-	var job = PrintJob.new()
-	job.duration = 30
-	job.reward = 20
-	
-	for i in randi_range(1, 4):
-		var item = PrintItem.new()
-		item.job = job
-		item.print_time = 5
-		item.material = 10
-		job.items.append(item)
-	
-	return job
-
-
 func _update_job_list():
-	var item_types = JobManager.get_available_item_types().duplicate()
-	
-	item_types.shuffle()
-	
-	var new_jobs: Array[PrintJob] = []
-	
-	for i in range(3):
-		var job = _create_new_job()
-		job.item_type = item_types.pop_front()
-		new_jobs.append(job)
+	var new_jobs = JobManager.create_new_jobs()
 	
 	new_jobs_ui.set_jobs(new_jobs)
 	new_jobs_ui.show()
@@ -62,11 +38,12 @@ func _accept():
 	
 	var job = new_jobs_ui.get_selected()
 	
+	if not JobManager.on_player_accepted_job(job):
+		return
+	
 	new_jobs_ui.hide()
 	choose_job_alert.hide()
 	assign_printers_alert.show()
-	
-	JobManager.on_player_accepted_job(job)
 
 
 func _on_ready_for_job():

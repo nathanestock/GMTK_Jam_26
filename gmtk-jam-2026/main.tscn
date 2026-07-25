@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://fm77st67aphw"]
 
 [ext_resource type="PackedScene" uid="uid://c3eo6cqsrha2a" path="res://player.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://8sm36va0hsd0" path="res://main.gd" id="1_efxa6"]
 [ext_resource type="PackedScene" uid="uid://d168uwm2mfwar" path="res://room.tscn" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://1nq6fa488rg" path="res://computer.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bks2jkvfnlmj" path="res://printers/printer_table.tscn" id="3_lquwl"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://buiron53yesdh" path="res://cat.tscn" id="9_kek77"]
 
 [node name="main" type="Node2D" unique_id=1447262448]
+script = ExtResource("1_efxa6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=445633741]
 anchor_mode = 0
