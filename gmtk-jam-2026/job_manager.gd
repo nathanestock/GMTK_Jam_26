@@ -9,7 +9,7 @@ signal win_game
 signal loss_game
 signal reset
 
-const money_to_win = 1000
+const money_to_win = 100
 var zen_mode = false
 
 const print_job_ui = preload("res://ui/print_job_ui.tscn")

@@ -193,7 +193,7 @@ offset_transform_position = Vector2(0, -50)
 theme = ExtResource("3_hifh1")
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 48
-text = "Debt is paid!"
+text = "Debt Paid!"
 horizontal_alignment = 1
 
 [node name="KeepPlaying" type="Label" parent="YouWin/VBoxContainer" unique_id=1209630176]
@@ -235,7 +235,7 @@ offset_transform_position = Vector2(0, -50)
 theme = ExtResource("3_hifh1")
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
-text = "Lost your sanity!"
+text = "Lost Your Sanity!"
 horizontal_alignment = 1
 
 [node name="Restart" type="Label" parent="YouLose/VBoxContainer" unique_id=1476421715]
