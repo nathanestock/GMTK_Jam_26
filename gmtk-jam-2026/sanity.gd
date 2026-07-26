@@ -44,6 +44,10 @@ func start():
 	_update_ui()
 
 
+func stop():
+	timer.stop()
+
+
 func _on_timer_timeout():
 	sanity -= 1
 	

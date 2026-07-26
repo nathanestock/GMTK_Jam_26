@@ -95,13 +95,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_d4d37")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayGame" unique_id=1509123745]
 layout_mode = 2
-theme_override_constants/separation = 48
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -25)
+theme_override_constants/separation = 35
 alignment = 1
 
 [node name="HBoxContainer" type="HFlowContainer" parent="PlayGame/VBoxContainer" unique_id=1282498914]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 2
-offset_transform_enabled = true
 theme_override_constants/h_separation = 32
 alignment = 1
 
@@ -143,6 +144,8 @@ horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="PlayGame/VBoxContainer" unique_id=399651158]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -20)
 theme = ExtResource("3_hifh1")
 theme_override_font_sizes/font_size = 48
 text = "THE GAME"
@@ -151,7 +154,7 @@ horizontal_alignment = 1
 [node name="Play" type="Label" parent="PlayGame/VBoxContainer" unique_id=1414918330]
 layout_mode = 2
 theme = ExtResource("3_hifh1")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 20
 text = "Walk Around [A/D]"
 horizontal_alignment = 1
 
@@ -231,6 +234,7 @@ text = "Restart [Space]"
 horizontal_alignment = 1
 
 [node name="SoundEffects" type="AudioStreamPlayer" parent="." unique_id=105039090]
+volume_db = -5.0
 script = ExtResource("5_5ykyo")
 
 [connection signal="alert" from="Sanity" to="." method="_on_sanity_alert"]

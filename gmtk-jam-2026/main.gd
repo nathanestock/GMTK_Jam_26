@@ -1,9 +1,12 @@
 extends Node2D
 class_name Game
 
+const music_intro = preload("res://sounds/Music Intro.wav")
+const music_loop = preload("res://sounds/Music Loop.wav")
 
 @onready var player = $Player
 @onready var cat = $Cat
+@onready var music = $Music
 
 enum State { PLAY_GAME, PLAYING, WON, LOST }
 
@@ -17,6 +20,24 @@ func _ready():
 	
 	JobManager.win_game.connect(_on_win_game)
 	JobManager.loss_game.connect(_on_lose_game)
+	
+	_play_music()
+
+
+func _play_music():
+	if music.finished.is_connected(_loop_music):
+		music.finished.disconnect(_loop_music)
+	music.stream = music_intro
+	music.play()
+	
+	await music.finished
+	music.stream = music_loop
+	music.play()
+	music.finished.connect(_loop_music)
+
+func _loop_music():
+	music.stream = music_loop
+	music.play()
 
 
 func _input(event):
@@ -79,6 +100,8 @@ func _on_quit():
 	_toggle_player_controls(false)
 	_toggle_countdowns(false)
 	JobManager.on_quit()
+	
+	_play_music()
 
 
 func _toggle_player_controls(value: bool):

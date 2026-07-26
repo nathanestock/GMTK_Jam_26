@@ -77,6 +77,7 @@ func _on_win_game():
 	list_hbox.hide()
 	money_ui.hide()
 	sanity_ui.hide()
+	sanity_ui.stop()
 	pet_cat_alert.hide()
 
 
@@ -277,6 +278,9 @@ func _on_sanity_alert():
 
 
 func on_pet_cat():
+	if win_ui.visible or lose_ui.visible or play_ui.visible:
+		return
+	
 	pet_cat_alert.hide()
 	sanity_ui.start()
 
