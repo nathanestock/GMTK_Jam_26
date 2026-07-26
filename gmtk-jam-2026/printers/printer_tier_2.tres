@@ -4,11 +4,14 @@
 [ext_resource type="Script" uid="uid://vhtwk4w6onxf" path="res://printers/3d_printer_tier.gd" id="1_qrp3j"]
 [ext_resource type="Texture2D" uid="uid://yown5avc0u6x" path="res://assets/tier2_item_action_ui.tres" id="2_ipjfc"]
 [ext_resource type="Texture2D" uid="uid://b548xd27skq3s" path="res://assets/tier2_printer.tres" id="2_vjrwt"]
+[ext_resource type="SpriteFrames" uid="uid://lhq26bl23m77" path="res://assets/tier2_printer_frames.tres" id="4_mbmt5"]
 
 [resource]
 script = ExtResource("1_qrp3j")
 max_items = 2
 texture = ExtResource("2_vjrwt")
+sprite_frames = ExtResource("4_mbmt5")
+idle_frame = 6
 basic_action_ui = ExtResource("1_ipjfc")
 item_action_ui = ExtResource("2_ipjfc")
 color = Color(0.8666667, 0.84705883, 0.5921569, 1)

@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://du4uvcqnhg0ea"]
+
+[ext_resource type="Texture2D" uid="uid://b164yoxf6c8q2" path="res://assets/Blue_Printer_Animation1.png" id="1_k7ilb"]
+[ext_resource type="Texture2D" uid="uid://clw42dmi7qhwl" path="res://assets/Blue_Printer_Animation2.png" id="2_2v7p0"]
+[ext_resource type="Texture2D" uid="uid://bfrdytqpgxca1" path="res://assets/Blue_Printer_Animation3.png" id="3_fngkm"]
+[ext_resource type="Texture2D" uid="uid://d3o38aj0rabll" path="res://assets/Blue_Printer_Animation4.png" id="4_ngxww"]
+[ext_resource type="Texture2D" uid="uid://cadeh2p4qqjjp" path="res://assets/Blue_Printer_Animation5.png" id="5_7a7cf"]
+[ext_resource type="Texture2D" uid="uid://cdmmbbncw6jyj" path="res://assets/Blue_Printer_Animation6.png" id="6_563qg"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k7ilb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2v7p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fngkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ngxww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7a7cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_563qg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]

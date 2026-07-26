@@ -4,11 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://s6hbddstsf5j" path="res://assets/tier1_basic_action_ui.tres" id="1_td1bm"]
 [ext_resource type="Texture2D" uid="uid://bqr8btqu7ea4i" path="res://assets/tier1_printer.tres" id="2_l8pk8"]
 [ext_resource type="Texture2D" uid="uid://bu7y0wssyeect" path="res://assets/tier1_item_action_ui.tres" id="2_td1bm"]
+[ext_resource type="SpriteFrames" uid="uid://du4uvcqnhg0ea" path="res://assets/tier1_printer_frames.tres" id="4_wxptg"]
 
 [resource]
 script = ExtResource("1_o17wd")
 max_items = 1
 texture = ExtResource("2_l8pk8")
+sprite_frames = ExtResource("4_wxptg")
+idle_frame = 4
 basic_action_ui = ExtResource("1_td1bm")
 item_action_ui = ExtResource("2_td1bm")
 color = Color(0.78039217, 0.99215686, 0.9647059, 1)

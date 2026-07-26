@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dwgukoswb1xmo"]
+
+[ext_resource type="Texture2D" uid="uid://m58ox6ed2117" path="res://assets/Pink_Printer_Animation1.png" id="1_kb0js"]
+[ext_resource type="Texture2D" uid="uid://co86f5u4r1a7e" path="res://assets/Pink_Printer_Animation2.png" id="2_8rghn"]
+[ext_resource type="Texture2D" uid="uid://dy62lhd1edsx2" path="res://assets/Pink_Printer_Animation3.png" id="3_cwovb"]
+[ext_resource type="Texture2D" uid="uid://mu7arjb334vt" path="res://assets/Pink_Printer_Animation4.png" id="4_wc34y"]
+[ext_resource type="Texture2D" uid="uid://dj4fj81cjfxks" path="res://assets/Pink_Printer_Animation5.png" id="5_1nyin"]
+[ext_resource type="Texture2D" uid="uid://b0kxtjqn8eobr" path="res://assets/Pink_Printer_Animation6.png" id="6_vn3ab"]
+[ext_resource type="Texture2D" uid="uid://biip5yk427fxp" path="res://assets/Pink_Printer_Animation7.png" id="7_06awl"]
+[ext_resource type="Texture2D" uid="uid://clvnmxkj127qx" path="res://assets/Pink_Printer_Animation8.png" id="8_siqel"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kb0js")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8rghn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cwovb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wc34y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1nyin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vn3ab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_06awl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_siqel")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]

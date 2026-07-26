@@ -38,7 +38,7 @@ offset_top = 5.0
 offset_right = 106.0
 offset_bottom = 20.0
 theme = ExtResource("3_4xfga")
-text = "Buy New Color"
+text = "No More Colors"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -49,7 +49,7 @@ offset_top = 5.0
 offset_right = 108.0
 offset_bottom = 20.0
 theme = ExtResource("3_4xfga")
-text = "Assign Printers"
+text = "Assign To Printers"
 horizontal_alignment = 1
 vertical_alignment = 1
 

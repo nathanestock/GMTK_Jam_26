@@ -156,7 +156,7 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(0, -20)
 theme = ExtResource("3_hifh1")
 theme_override_font_sizes/font_size = 48
-text = "THE GAME"
+text = "Sanity Check"
 horizontal_alignment = 1
 
 [node name="Play" type="Label" parent="PlayGame/VBoxContainer" unique_id=1414918330]

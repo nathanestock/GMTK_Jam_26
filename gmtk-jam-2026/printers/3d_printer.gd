@@ -5,7 +5,7 @@ signal finished_printing(items: Array[PrintItem])
 
 @export var tier: ThreeDPrinterTier
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var printer_sound = $PrinterSound
 @onready var finished_sound = $FinishedSound
 @onready var collected_sound = $CollectedSound
@@ -20,7 +20,14 @@ var countdown: Countdown = null
 
 func _ready():
 	JobManager.reset.connect(_reset)
-	sprite.texture = tier.texture
+	sprite.sprite_frames = tier.sprite_frames
+	sprite.frame = tier.idle_frame
+	
+	# offset for tier 3
+	if tier.max_items == 4:
+		sprite.position.x = 0
+	else:
+		sprite.position.x = 4
 
 
 func is_idle() -> bool:
@@ -39,6 +46,9 @@ func start_printing(_countdown: Countdown, items: Array[PrintItem]):
 	countdown.timeout.connect(_on_finished_printing)
 	
 	printer_sound.play(0)
+	
+	sprite.frame = 0
+	sprite.play("default")
 
 
 func _on_finished_printing():
@@ -48,6 +58,9 @@ func _on_finished_printing():
 	
 	printer_sound.stop()
 	finished_sound.play()
+	
+	sprite.stop()
+	sprite.frame = tier.idle_frame
 
 
 func on_picked_up_items():
@@ -64,3 +77,6 @@ func _reset():
 		countdown.timeout.disconnect(_on_finished_printing)
 	printer_sound.stop()
 	state = State.IDLE
+	
+	sprite.stop()
+	sprite.frame = tier.idle_frame
