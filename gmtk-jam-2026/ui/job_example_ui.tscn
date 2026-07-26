@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://tjyiyq3g27a"]
+
+[ext_resource type="Material" uid="uid://cq28xl75dch7p" path="res://ui/drop_shadow_material.tres" id="1_h6t8j"]
+[ext_resource type="Texture2D" uid="uid://bxs5wisw07l7j" path="res://assets/job_option.tres" id="1_ic4um"]
+[ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="2_h6t8j"]
+
+[node name="JobInstructions" type="Control" unique_id=1881515020]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2088812159]
+material = ExtResource("1_h6t8j")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasGroup" unique_id=538924174]
+offset_right = 104.0
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_ic4um")
+
+[node name="Label" type="Label" parent="CanvasGroup" unique_id=471056422]
+offset_left = -8.0
+offset_top = 56.0
+offset_right = 72.0
+offset_bottom = 93.0
+theme = ExtResource("2_h6t8j")
+text = "Print
+Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasGroup" unique_id=1258754706]
+offset_left = 56.0
+offset_top = 49.0
+offset_right = 136.0
+offset_bottom = 82.0
+theme = ExtResource("2_h6t8j")
+text = "Number of"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasGroup" unique_id=1249638788]
+offset_left = 65.0
+offset_top = 66.0
+offset_right = 145.0
+offset_bottom = 99.0
+theme = ExtResource("2_h6t8j")
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasGroup" unique_id=1298238152]
+offset_left = 117.0
+offset_top = 58.0
+offset_right = 197.0
+offset_bottom = 91.0
+theme = ExtResource("2_h6t8j")
+text = "Cost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasGroup" unique_id=2061676798]
+offset_left = 180.0
+offset_top = 58.0
+offset_right = 260.0
+offset_bottom = 91.0
+theme = ExtResource("2_h6t8j")
+text = "Reward"
+horizontal_alignment = 1
+vertical_alignment = 1

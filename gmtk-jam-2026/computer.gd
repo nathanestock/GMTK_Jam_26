@@ -6,6 +6,7 @@ extends Node2D
 @onready var assign_printers_alert = $PlayerControl/VBoxContainer/Static/CanvasGroup/AssignPrintersAlert
 @onready var no_colors_alert = $PlayerControl/VBoxContainer/Static/CanvasGroup/NoColorsAlert
 @onready var choose_job_alert = $PlayerControl/VBoxContainer/Static/CanvasGroup/ChooseJob
+@onready var unassigned_items_ui = $PlayerControl/VBoxContainer/Static/CanvasGroup/AssignPrintersAlert/HBoxContainer
 
 
 func _ready():	
@@ -15,6 +16,7 @@ func _ready():
 	
 	JobManager.ready_for_job.connect(_on_ready_for_job)
 	JobManager.out_of_colors.connect(_on_out_of_colors)
+	JobManager.unassigned_items.connect(_render_unassigned_items)
 	
 	new_jobs_ui.hide()
 	assign_printers_alert.hide()
@@ -56,3 +58,21 @@ func _on_ready_for_job():
 func _on_out_of_colors():
 	assign_printers_alert.hide()
 	no_colors_alert.show()
+
+
+func _render_unassigned_items(items: Array[PrintItem]):
+	for c in unassigned_items_ui.get_children():
+		c.queue_free()
+	
+	if items.size() == 0:
+		return
+	
+	var item_type = items[0].job.item_type
+	var color = items[0].job.color
+	
+	for item in items:
+		var ui = TextureRect.new()
+		ui.texture = item_type
+		ui.modulate = color
+		
+		unassigned_items_ui.add_child(ui)

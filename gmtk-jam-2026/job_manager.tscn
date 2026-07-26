@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://55sc1jiwaclr" path="res://sanity.gd" id="3_mrorm"]
 [ext_resource type="Material" uid="uid://cq28xl75dch7p" path="res://ui/drop_shadow_material.tres" id="3_n6lgg"]
 [ext_resource type="Script" uid="uid://vbet158nk487" path="res://global_sounds.gd" id="5_5ykyo"]
+[ext_resource type="Texture2D" uid="uid://jih3uj54r1ud" path="res://assets/Logo.png" id="6_mrorm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4d37"]
 bg_color = Color(0, 0, 0, 0.78431374)
@@ -80,7 +81,7 @@ offset_bottom = 221.0
 theme = ExtResource("3_hifh1")
 theme_override_colors/font_color = Color(0.9098039, 0.18431373, 0.23529412, 1)
 theme_override_font_sizes/font_size = 24
-text = "Pet the cat!"
+text = "Pet The Cat!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -92,20 +93,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d4d37")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayGame" unique_id=1509123745]
-layout_mode = 2
+[node name="CanvasGroup" type="CanvasGroup" parent="PlayGame" unique_id=511893237]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayGame/CanvasGroup" unique_id=1509123745]
+material = ExtResource("3_n6lgg")
+offset_right = 1024.0
+offset_bottom = 576.0
 offset_transform_enabled = true
-offset_transform_position = Vector2(0, -25)
-theme_override_constants/separation = 35
+offset_transform_position = Vector2(0, -35)
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="HBoxContainer" type="HFlowContainer" parent="PlayGame/VBoxContainer" unique_id=1282498914]
+[node name="HBoxContainer" type="HFlowContainer" parent="PlayGame/CanvasGroup/VBoxContainer" unique_id=1282498914]
 modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 2
 theme_override_constants/h_separation = 32
 alignment = 1
 
-[node name="Credits" type="Label" parent="PlayGame/VBoxContainer/HBoxContainer" unique_id=1716746271]
+[node name="Credits" type="Label" parent="PlayGame/CanvasGroup/VBoxContainer/HBoxContainer" unique_id=1716746271]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -50)
@@ -114,7 +119,7 @@ theme_override_font_sizes/font_size = 20
 text = "stocknstuff"
 horizontal_alignment = 1
 
-[node name="Credits2" type="Label" parent="PlayGame/VBoxContainer/HBoxContainer" unique_id=2146752466]
+[node name="Credits2" type="Label" parent="PlayGame/CanvasGroup/VBoxContainer/HBoxContainer" unique_id=2146752466]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -50)
@@ -123,7 +128,7 @@ theme_override_font_sizes/font_size = 20
 text = "sentric490"
 horizontal_alignment = 1
 
-[node name="Credits3" type="Label" parent="PlayGame/VBoxContainer/HBoxContainer" unique_id=93674752]
+[node name="Credits3" type="Label" parent="PlayGame/CanvasGroup/VBoxContainer/HBoxContainer" unique_id=93674752]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -50)
@@ -132,7 +137,7 @@ theme_override_font_sizes/font_size = 20
 text = "sirtibbles"
 horizontal_alignment = 1
 
-[node name="Credits4" type="Label" parent="PlayGame/VBoxContainer/HBoxContainer" unique_id=1764436563]
+[node name="Credits4" type="Label" parent="PlayGame/CanvasGroup/VBoxContainer/HBoxContainer" unique_id=1764436563]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -50)
@@ -141,7 +146,7 @@ theme_override_font_sizes/font_size = 20
 text = "spiceygurt"
 horizontal_alignment = 1
 
-[node name="Credits5" type="Label" parent="PlayGame/VBoxContainer/HBoxContainer" unique_id=786218799]
+[node name="Credits5" type="Label" parent="PlayGame/CanvasGroup/VBoxContainer/HBoxContainer" unique_id=786218799]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -50)
@@ -150,16 +155,17 @@ theme_override_font_sizes/font_size = 20
 text = "nikaladz"
 horizontal_alignment = 1
 
-[node name="Title" type="Label" parent="PlayGame/VBoxContainer" unique_id=399651158]
+[node name="Logo" type="TextureRect" parent="PlayGame/CanvasGroup/VBoxContainer" unique_id=834516691]
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -20)
-theme = ExtResource("3_hifh1")
-theme_override_font_sizes/font_size = 48
-text = "Sanity Check"
-horizontal_alignment = 1
+texture = ExtResource("6_mrorm")
+expand_mode = 5
 
-[node name="Play" type="Label" parent="PlayGame/VBoxContainer" unique_id=1414918330]
+[node name="Play" type="Label" parent="PlayGame/CanvasGroup/VBoxContainer" unique_id=1414918330]
 layout_mode = 2
 theme = ExtResource("3_hifh1")
 theme_override_font_sizes/font_size = 20

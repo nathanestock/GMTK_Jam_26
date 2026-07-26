@@ -33,7 +33,8 @@ func _play_music():
 	await music.finished
 	music.stream = music_loop
 	music.play()
-	music.finished.connect(_loop_music)
+	if not music.finished.is_connected(_loop_music):
+		music.finished.connect(_loop_music)
 
 func _loop_music():
 	music.stream = music_loop

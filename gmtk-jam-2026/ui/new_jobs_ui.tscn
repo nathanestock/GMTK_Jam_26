@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://ba0jysxrl7vrq" path="res://ui/base_theme.tres" id="1_kt8ir"]
 [ext_resource type="Material" uid="uid://cq28xl75dch7p" path="res://ui/drop_shadow_material.tres" id="1_mghln"]
 [ext_resource type="Texture2D" uid="uid://cvo4ej2ng7g2v" path="res://assets/job_list_header.tres" id="2_103eb"]
+[ext_resource type="PackedScene" uid="uid://tjyiyq3g27a" path="res://ui/job_example_ui.tscn" id="3_hqice"]
 
 [node name="NewJobsUI" type="Control" unique_id=1023740501]
 material = ExtResource("1_mghln")
@@ -21,12 +22,21 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_103eb")
 
+[node name="JobInstructions" parent="." unique_id=1881515020 instance=ExtResource("3_hqice")]
+z_index = 1
+z_as_relative = false
+layout_mode = 0
+offset_left = -64.0
+offset_top = 270.0
+offset_right = -24.0
+offset_bottom = 310.0
+
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1967779029]
 material = ExtResource("1_mghln")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup" unique_id=93162966]
 offset_right = 124.0
-offset_bottom = 169.0
+offset_bottom = 172.0
 
 [node name="Accept" type="Label" parent="CanvasGroup/VBoxContainer" unique_id=556226632]
 layout_mode = 2
@@ -47,4 +57,5 @@ texture = ExtResource("2_103eb")
 stretch_mode = 2
 
 [node name="JobsList" type="VBoxContainer" parent="CanvasGroup/VBoxContainer" unique_id=1309185661]
+custom_minimum_size = Vector2(0, 131)
 layout_mode = 2

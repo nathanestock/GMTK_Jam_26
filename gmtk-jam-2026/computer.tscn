@@ -42,12 +42,20 @@ text = "No More Colors"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AssignPrintersAlert" type="Label" parent="PlayerControl/VBoxContainer/Static/CanvasGroup" unique_id=97022145]
-visible = false
-offset_left = 18.0
-offset_top = 5.0
-offset_right = 108.0
+[node name="AssignPrintersAlert" type="VBoxContainer" parent="PlayerControl/VBoxContainer/Static/CanvasGroup" unique_id=1819832413]
+offset_left = 8.0
+offset_top = -20.0
+offset_right = 118.0
 offset_bottom = 20.0
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerControl/VBoxContainer/Static/CanvasGroup/AssignPrintersAlert" unique_id=440481010]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PlayerControl/VBoxContainer/Static/CanvasGroup/AssignPrintersAlert" unique_id=97022145]
+layout_mode = 2
 theme = ExtResource("3_4xfga")
 text = "Assign To Printers"
 horizontal_alignment = 1
