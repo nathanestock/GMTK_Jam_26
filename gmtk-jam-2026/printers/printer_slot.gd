@@ -47,7 +47,9 @@ func _on_player_control_accept():
 	if print_action.visible:
 		var print_items = print_action.items
 		printer.start_printing(printing_countdown, print_items)
-		printer.finished_printing.connect(_on_finished_printing)
+		
+		if not printer.finished_printing.is_connected(_on_finished_printing):
+			printer.finished_printing.connect(_on_finished_printing)
 		
 		JobManager.on_player_printing_items(print_items)
 		

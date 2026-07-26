@@ -52,8 +52,8 @@ func _update_money_label():
 	money_label.text = FormatHelpers.money_str(money)
 
 
-func _update_money_ui(str: String, color: Color):
-	update_money_label.text = str
+func _update_money_ui(string: String, color: Color):
+	update_money_label.text = string
 	update_money_label.modulate = color
 	
 	update_money_label.modulate.a = 1.0
