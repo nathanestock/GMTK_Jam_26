@@ -9,7 +9,7 @@ signal win_game
 signal loss_game
 signal reset
 
-const money_to_win = 100
+const money_to_win = 1000
 var zen_mode = false
 
 const print_job_ui = preload("res://ui/print_job_ui.tscn")
@@ -121,29 +121,46 @@ func on_quit():
 
 func create_new_jobs() -> Array[PrintJob]:
 	var item_types = _get_available_item_types().duplicate()
-	
 	item_types.shuffle()
 	
 	var new_jobs: Array[PrintJob] = []
 	
+	var item_count_pools = [
+		[1, 1, 1, 1, 2, 2, 3],       # Job 1: Mostly 1-2 items, 3 is rare
+		[1, 2, 2, 2, 3, 3, 4],       # Job 2: Mostly 2-3 items, 1 or 4 is rare
+		[2, 3, 3, 3, 4, 4, 4]        # Job 3: Mostly 3-4 items, 2 is rare
+	]
+	
+	var reward_pools = [
+		[15, 15, 15, 20, 20, 25],    # Job 1: Avg ~18
+		[20, 20, 25, 25, 30, 30],    # Job 2: Avg ~25
+		[25, 30, 30, 35, 35, 40]     # Job 3: Avg ~32.5
+	]
+	
+	var print_time_pools = [
+		[5, 5, 5, 10, 10, 15, 20],   		# Job 1: Mostly 5-10 seconds, rare 15, 20
+		[5, 10, 10, 15, 15, 20, 20, 25],    # Job 2: Mostly 10-20 seconds, rare 5, 25
+		[10, 20, 20, 20, 25, 25, 30] 		# Job 3: Mostly 20-25 seconds, rare 10, 30
+	]
+	
+	var job_costs = [0, 5, 10]
+	
 	for j in range(3):
 		var job = PrintJob.new()
 		
-		job.duration = 30
-		if j == 0 and money_ui.money <= 0:
-			job.cost = 0
-		else:
-			job.cost = 5
-		job.reward = 20
+		job.cost = job_costs[j]
+		job.reward = reward_pools[j].pick_random()
 		
-		var num_of_items = [1,1,1,2,2,3,4].pick_random()
+		var num_of_items = item_count_pools[j].pick_random()
+		var print_time = print_time_pools[j].pick_random()
 		
 		for i in range(num_of_items):
 			var item = PrintItem.new()
 			item.job = job
-			item.print_time = 5
-			item.material = 10
+			item.print_time = print_time
 			job.items.append(item)
+		
+		job.duration = print_time * (num_of_items + 2)
 		
 		job.item_type = item_types.pop_front()
 		new_jobs.append(job)
@@ -220,7 +237,8 @@ func on_player_shipping_jobs():
 		win_game.emit()
 		return
 	
-	ready_for_job.emit()
+	if jobs.all(func (j): return j.get_unassigned_items().size() == 0):
+		ready_for_job.emit()
 	
 	_render_jobs_ui()
 

@@ -18,7 +18,7 @@ sprite_frames = ExtResource("4_haxdu")
 
 [node name="PrinterSound" type="AudioStreamPlayer2D" parent="." unique_id=853284051]
 stream = ExtResource("4_1q07u")
-volume_db = 10.0
+volume_db = 12.0
 
 [node name="FinishedSound" type="AudioStreamPlayer2D" parent="." unique_id=1764868601]
 stream = ExtResource("4_ibneu")

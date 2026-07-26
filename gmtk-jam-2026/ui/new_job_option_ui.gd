@@ -15,7 +15,7 @@ class_name NewJobOptionUI
 
 
 func _ready():
-	print_time.text = str(job.get_total_time())
+	print_time.text = str(job.items[0].print_time)
 	num_of_items.text = str(job.items.size())
 	cost.text = str(job.cost)
 	reward.text = str(job.reward)

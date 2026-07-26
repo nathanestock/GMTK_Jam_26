@@ -2,7 +2,7 @@ extends Resource
 class_name PrintItem
 
 @export var job: PrintJob
-@export var material: int = 0
+@export var material: int = 0 # deprecated
 @export var print_time: int = 0
 
 var color: Color
