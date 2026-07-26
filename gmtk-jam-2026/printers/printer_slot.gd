@@ -20,6 +20,7 @@ var printer: ThreeDPrinter
 
 
 func _ready():
+	JobManager.reset.connect(_reset)
 	JobManager.unassigned_items.connect(_on_unassigned_items)
 	
 	print_action.hide()
@@ -190,3 +191,16 @@ func _set_printer(_printer: ThreeDPrinter):
 		swap_action.tier = null
 		collect_action.tier = null
 		finished_alert.tier = null
+
+
+func _reset():
+	print_action.hide()
+	move_action.hide()
+	place_action.hide()
+	swap_action.hide()
+	collect_action.hide()
+	printing_countdown.hide()
+	finished_alert.hide()
+	
+	print_action.clear()
+	finished_alert.clear()

@@ -14,13 +14,13 @@ func _ready() -> void:
 
 
 func _input(event):
-	if event is InputEventKey and player_ui.visible and static_ui.visible:
+	if event is InputEventKey and player_ui.visible:
 		if event.is_action_pressed("ui_pet"):
 			pet.emit()
 			
 
 func _on_body_entered(body):
-	if body is Player and player_ui and static_ui.visible:
+	if body is Player and player_ui:
 		player = body
 		player_ui.show()
 		player_entered.emit(body)

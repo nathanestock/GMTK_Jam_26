@@ -65,7 +65,7 @@ shape = SubResource("RectangleShape2D_e8xbq")
 
 [node name="SoundEffects" type="AudioStreamPlayer2D" parent="." unique_id=1687498166]
 stream = ExtResource("7_t0hge")
-volume_db = 10.0
+volume_db = 5.0
 
 [connection signal="accept" from="CanvasGroup/PlayerControl" to="." method="_on_player_control_accept"]
 [connection signal="player_entered" from="CanvasGroup/PlayerControl" to="." method="_on_player_control_player_entered"]

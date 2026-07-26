@@ -18,7 +18,7 @@ texture = ExtResource("2_0137j")
 
 [node name="PrinterSound" type="AudioStreamPlayer2D" parent="." unique_id=853284051]
 stream = ExtResource("4_1q07u")
-volume_db = 15.0
+volume_db = 10.0
 
 [node name="FinishedSound" type="AudioStreamPlayer2D" parent="." unique_id=1764868601]
 stream = ExtResource("4_ibneu")
@@ -26,4 +26,4 @@ volume_db = 5.0
 
 [node name="CollectedSound" type="AudioStreamPlayer2D" parent="." unique_id=660963967]
 stream = ExtResource("6_haxdu")
-volume_db = 10.0
+volume_db = 5.0

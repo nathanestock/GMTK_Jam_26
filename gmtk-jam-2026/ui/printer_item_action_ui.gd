@@ -74,3 +74,12 @@ func set_items(_items: Array[PrintItem]):
 		
 		if i == items.size() - 1:
 			break
+
+
+func clear():
+	item1.hide()
+	item2.hide()
+	item3.hide()
+	item4.hide()
+	
+	items = []

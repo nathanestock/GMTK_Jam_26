@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b8412w5jcg1c5" path="res://mailbox.tscn" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://buiron53yesdh" path="res://cat.tscn" id="9_kek77"]
 
+[sub_resource type="AudioStream" id="AudioStream_e8xbq"]
+
 [node name="main" type="Node2D" unique_id=1447262448]
 script = ExtResource("1_efxa6")
 
@@ -20,7 +22,7 @@ anchor_mode = 0
 [node name="Room" parent="." unique_id=730556488 instance=ExtResource("1_lquwl")]
 
 [node name="Computer" parent="." unique_id=646436050 instance=ExtResource("3_1bvp3")]
-position = Vector2(144, 544)
+position = Vector2(148, 544)
 
 [node name="PrinterTable" parent="." unique_id=1849543402 instance=ExtResource("3_lquwl")]
 position = Vector2(352, 544)
@@ -49,6 +51,9 @@ position = Vector2(232, 544)
 [node name="Cat" parent="." unique_id=986687164 instance=ExtResource("9_kek77")]
 position = Vector2(764, 544)
 travel_range = Vector2(200, 900)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1959229990]
+stream = SubResource("AudioStream_e8xbq")
 
 [editable path="PrinterTable"]
 [editable path="PrinterTable2"]

@@ -19,6 +19,7 @@ var countdown: Countdown = null
 
 
 func _ready():
+	JobManager.reset.connect(_reset)
 	sprite.texture = tier.texture
 
 
@@ -54,3 +55,12 @@ func on_picked_up_items():
 	state = State.IDLE
 	
 	collected_sound.play()
+
+
+func _reset():
+	printing_items = []
+	countdown.stop()
+	if countdown.timeout.is_connected(_on_finished_printing):
+		countdown.timeout.disconnect(_on_finished_printing)
+	printer_sound.stop()
+	state = State.IDLE

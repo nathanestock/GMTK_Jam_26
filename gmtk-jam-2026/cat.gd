@@ -48,9 +48,6 @@ func _awake():
 	state = State.AWAKE
 	animations.play("Sit")
 	_reset_travel_timer()
-	
-	# Pet after awake
-	static_ui.show()
 
 
 func _sleep():
@@ -105,7 +102,7 @@ func _attacking():
 
 
 func _pet():
-	# increase sanity
+	JobManager.on_pet_cat()
 	
 	cat_countdown.stop()
 	static_ui.hide()

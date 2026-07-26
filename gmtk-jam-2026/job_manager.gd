@@ -6,9 +6,11 @@ signal out_of_colors
 signal unassigned_items(items: PrintItem)
 signal ready_to_ship(job: PrintJob)
 signal win_game
+signal loss_game
+signal reset
 
-@export var money_to_win = 100
-@export var starting_money = 0
+const money_to_win = 100
+var zen_mode = false
 
 const print_job_ui = preload("res://ui/print_job_ui.tscn")
 const item_circle = preload("res://assets/item_circle.tres")
@@ -25,7 +27,10 @@ const item_top = preload("res://assets/item_top.tres")
 @onready var win_ui = $YouWin
 @onready var list_hbox = $JobListUI
 @onready var money_ui = $MoneyCounterUI
+@onready var sanity_ui = $Sanity
 @onready var sounds = $SoundEffects
+@onready var pet_cat_alert = $PetCatAlert
+@onready var lose_ui = $YouLose
 
 
 var jobs: Array[PrintJob] = []
@@ -37,12 +42,17 @@ func _ready():
 	win_ui.hide()
 	list_hbox.hide()
 	money_ui.hide()
+	sanity_ui.hide()
+	pet_cat_alert.hide()
+	lose_ui.hide()
 	
 	ready_for_job.connect(func (): print("Ready For Job"))
 	unassigned_items.connect(func (items): print("Unassigned Items: {items}".format({ "items": items })))
 	ready_to_ship.connect(func (job): print("Ready To Ship: {job}".format({ "job": job })))
 	out_of_colors.connect(func (): print("Out Of Colors"))
 	win_game.connect(_on_win_game)
+	sanity_ui.out_of_sanity.connect(_on_lose_game)
+	reset.connect(_reset)
 
 
 func on_play_game():
@@ -53,8 +63,10 @@ func on_play_game():
 	
 	list_hbox.show()
 	money_ui.show()
-	money_ui.set_money(starting_money)
+	money_ui.set_money(0)
 	money_ui.set_total(money_to_win)
+	sanity_ui.show()
+	sanity_ui.start()
 	ready_for_job.emit()
 
 
@@ -64,17 +76,34 @@ func _on_win_game():
 	
 	list_hbox.hide()
 	money_ui.hide()
+	sanity_ui.hide()
+	pet_cat_alert.hide()
+
+
+func _on_lose_game():
+	print("You lose!")
+	lose_ui.show()
+	
+	list_hbox.hide()
+	money_ui.hide()
+	sanity_ui.hide()
+	pet_cat_alert.hide()
+	
+	loss_game.emit()
 
 
 func on_keep_playing():
 	print("Keep playing")
 	win_ui.hide()
 	
-	money_to_win = null
+	zen_mode = true
 	money_ui.set_zen_mode()
 	
 	list_hbox.show()
 	money_ui.show()
+	sanity_ui.show()
+	sanity_ui.start()
+	pet_cat_alert.hide()
 
 
 func on_quit():
@@ -82,11 +111,11 @@ func on_quit():
 	play_ui.show()
 	
 	win_ui.hide()
+	lose_ui.hide()
 	list_hbox.hide()
 	money_ui.hide()
 	
-	jobs = []
-	_render_jobs_ui()
+	reset.emit()
 
 
 func create_new_jobs() -> Array[PrintJob]:
@@ -186,7 +215,7 @@ func on_player_shipping_jobs():
 	money_ui.add_money(total_reward)
 	sounds.play_money_increase()
 	
-	if money_to_win and money_ui.money >= money_to_win:
+	if not zen_mode and money_ui.money >= money_to_win:
 		win_game.emit()
 		return
 	
@@ -241,3 +270,28 @@ func _render_jobs_ui():
 			var new_job_ui = print_job_ui.instantiate()
 			new_job_ui.job = job
 			list_hbox.add_child(new_job_ui)
+
+
+func _on_sanity_alert():
+	pet_cat_alert.show()
+
+
+func on_pet_cat():
+	pet_cat_alert.hide()
+	sanity_ui.start()
+
+
+func _reset():
+	jobs = []
+	for child in list_hbox.get_children():
+		child.queue_free()
+	
+	play_ui.show()
+	win_ui.hide()
+	list_hbox.hide()
+	money_ui.hide()
+	sanity_ui.hide()
+	pet_cat_alert.hide()
+	lose_ui.hide()
+	
+	zen_mode = false

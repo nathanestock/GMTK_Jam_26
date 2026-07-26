@@ -16,6 +16,7 @@ func _ready():
 	cat.reparent(JobManager)
 	
 	JobManager.win_game.connect(_on_win_game)
+	JobManager.loss_game.connect(_on_lose_game)
 
 
 func _input(event):
@@ -28,6 +29,9 @@ func _input(event):
 				if event.is_action_pressed("ui_accept"):
 					_on_keep_playing()
 				elif event.is_action_pressed("ui_close_dialog"):
+					_on_quit()
+			State.LOST:
+				if event.is_action_pressed("ui_accept"):
 					_on_quit()
 
 
@@ -50,6 +54,15 @@ func _on_win_game():
 	cat.reparent(JobManager)
 
 
+func _on_lose_game():
+	state = State.LOST
+	
+	_toggle_player_controls(false)
+	_toggle_countdowns(false)
+	player.reparent(JobManager)
+	cat.reparent(JobManager)
+
+
 func _on_keep_playing():
 	state = State.PLAYING
 	
@@ -61,8 +74,6 @@ func _on_keep_playing():
 
 
 func _on_quit():
-	return # TODO figure out game reset
-	
 	state = State.PLAY_GAME
 	
 	_toggle_player_controls(false)

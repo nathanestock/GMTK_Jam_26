@@ -9,6 +9,7 @@ const package = preload("res://assets/package.tres")
 
 
 func _ready():
+	JobManager.reset.connect(_reset)
 	JobManager.ready_to_ship.connect(_on_ready_to_ship)
 	
 	ship_action.hide()
@@ -35,3 +36,11 @@ func _on_player_control_accept():
 		
 		ship_action.hide()
 		ship_alert.hide()
+
+
+func _reset():
+	for child in packages_ui.get_children():
+		child.queue_free()
+	
+	ship_action.hide()
+	ship_alert.hide()
